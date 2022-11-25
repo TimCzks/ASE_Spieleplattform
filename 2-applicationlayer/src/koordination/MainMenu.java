@@ -3,11 +3,11 @@ package koordination;
 import java.util.Scanner;
 
 import domain.code.User;
-import konvertierung.Konverter;
 
 public class MainMenu {
 
 	private static User user;
+	private static KonverterInterface konverter;
 
 	public static void main(String[] args) {
 		System.out.println(
@@ -30,10 +30,9 @@ public class MainMenu {
 	}
 
 	private static boolean einloggen(Scanner sc) {
-		KonverterInterface konv = new Konverter(); // TODO KonverterInterface statt Konverter?
 		System.out.println("Bitte gib deinen Benutzernamen an: ");
 		String username = sc.next();
-		user = konv.erstelleUser(username);
+		user = konverter.erstelleUser(username);
 		return true;
 	}
 
