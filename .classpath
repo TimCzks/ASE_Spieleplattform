@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="0-pluginlayer/src"/>
+	<classpathentry kind="src" path="1-adapterlayer/src"/>
+	<classpathentry kind="src" path="2-applicationlayer/src"/>
+	<classpathentry kind="src" path="3-domaincode-layer/src"/>
+	<classpathentry kind="output" path="0-pluginlayer/bin"/>
+</classpath>

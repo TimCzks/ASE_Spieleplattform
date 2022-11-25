@@ -1,7 +1,8 @@
-package domain.code;
+package koordination;
 
 import java.util.Scanner;
 
+import domain.code.User;
 import konvertierung.Konverter;
 
 public class MainMenu {
@@ -29,7 +30,7 @@ public class MainMenu {
 	}
 
 	private static boolean einloggen(Scanner sc) {
-		Konverter konv = new Konverter();
+		KonverterInterface konv = new Konverter(); // TODO KonverterInterface statt Konverter?
 		System.out.println("Bitte gib deinen Benutzernamen an: ");
 		String username = sc.next();
 		user = konv.erstelleUser(username);
