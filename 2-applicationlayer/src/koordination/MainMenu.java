@@ -10,6 +10,7 @@ public class MainMenu {
 	private static KonverterInterface konverter;
 
 	public static void main(String[] args) {
+		konverter = new KonverterFactory().getKonverter();
 		System.out.println(
 				"Willkommen bei der Spieleplattform Schiffsmännchen.\nFalls du bereits einen Account hast, nutze den Befehl \"LOG\"."
 						+ "\nAnsonsten nutze den Befehl \"REG\".");
