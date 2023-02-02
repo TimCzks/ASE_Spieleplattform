@@ -13,7 +13,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User " + username + ", " + stats + ".";
+		return "User " + username + ", " + stats.toString() + ".";
 	}
 
 	public User() {
