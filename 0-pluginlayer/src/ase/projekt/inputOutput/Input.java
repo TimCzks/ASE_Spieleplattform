@@ -10,7 +10,7 @@ import konvertierung.InputInterface;
 
 public class Input implements InputInterface {
 
-	private final String PATH = "C:\\ASE_Spieleplattform\\";
+	private final String PATH = "./resources/";
 
 	@Override
 	public String[] leseUserDateiEin(String username) {
@@ -32,7 +32,7 @@ public class Input implements InputInterface {
 
 	@Override
 	public String[] leseLoesungswoerterEin() {
-		File f = new File(PATH + "Galgenmaennchen.txt");
+		File f = new File(PATH + "GalgenmaennchenWoerter.txt");
 		String[] s = null;
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(f));

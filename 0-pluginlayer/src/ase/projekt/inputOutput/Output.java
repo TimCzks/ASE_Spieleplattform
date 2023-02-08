@@ -9,9 +9,11 @@ import konvertierung.OutputInterface;
 
 public class Output implements OutputInterface {
 
+	private final String PATH = "./resources/";
+
 	@Override
 	public void speichereUserAb(String[] userInfos) {
-		File f = new File("C:\\ASE_Spieleplattform\\" + userInfos[0] + ".txt");
+		File f = new File(PATH + userInfos[0] + ".txt");
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(f));
 			writer.write(userInfos[1] + "," + userInfos[2] + "," + userInfos[3]);

@@ -18,11 +18,11 @@ public class MainMenu {
 				"Willkommen bei der Spieleplattform Schiffsmännchen.\nFalls du bereits einen Account hast, nutze den Befehl 'LOG'."
 						+ "\nAnsonsten nutze den Befehl 'REG'.");
 		Scanner sc = new Scanner(System.in);
-		if (!anmelden(sc))
-			System.out.println("Etwas ist schief gelaufen.");
+		while (!anmelden(sc)) {
+			System.out.println("Eingabe nicht erkannt. Bitte achte auf die Schreibweise und versuche es erneut.");
+		}
 		System.out.println("Du bist erfolgreich eingeloggt.\n" + user.toString() + "\n");
 		starteSpieleplattform(user, sc);
-		// eingeloggt(); --> Überprüfen auf weitere Befehle, "STATS", "GGM", "SV"
 	}
 
 	private static boolean anmelden(Scanner sc) {
@@ -50,29 +50,35 @@ public class MainMenu {
 	}
 
 	private static void starteSpieleplattform(User user, Scanner sc) {
-		System.out.println("Willkommen!" + "\nMit dem Befehl 'GGM' startest du eine Runde Galgenmännchen."
+		System.out.println("Hey, mit dem Befehl 'GGM' startest du eine Runde Galgenmännchen."
 				+ "\nMit dem Befehl 'SV' startest du eine Runde Schiffe Versenken.\nMit dem Befehl 'STATS' kannst du dir deine bisherige Spielestatistik anschauen."
-				+ "\nÜber 'SAVE' kannst du deinen Account mit der aktuellen Statistik abspeichern.");
-		boolean inGame = false;
+				+ "\nÜber 'SAVE' kannst du deinen Account mit der aktuellen Statistik abspeichern."
+				+ "\nÜber 'EXIT' kannst du das Spiel verlassen - denke daran, vorher zu speichern.");
+		boolean inLoop = true;
 		do {
 			System.out.println("\nWas möchtest du tun?");
 			String eingabe = sc.next();
 			switch (eingabe) {
 			case "GGM":
 				ggm = new Galgenmaennchen();
-				ggm.initGame(sc);
-				inGame = true;
+				ggm.initGame(sc, user);
 				break;
 			case "SV":
-				inGame = true;
 				break;
 			case "STATS":
 				break;
 			case "SAVE":
+				konverter.speichereUser(user);
+				System.out.println("Erfolgreich gespeichert. " + user.toString());
+				break;
+			case "EXIT":
+				inLoop = false;
+				System.out.println("Bis zum nächsten mal!");
 				break;
 			default:
 				System.out.println("Eingabe nicht erkannt. Bitte achte auf die Schreibweise und versuche es erneut.");
 			}
-		} while (!inGame);
+		} while (inLoop);
 	}
+
 }
