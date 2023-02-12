@@ -26,7 +26,7 @@ public class Konverter implements KonverterInterface {
 	@Override
 	public void speichereUser(User user) {
 		String[] infos = new String[] { user.getUsername(), String.valueOf(user.getStats().getSiegeGGM()),
-				String.valueOf(user.getStats().getSiegeSV()), String.valueOf(user.getStats().getGespielteSpiele()) };
+				String.valueOf(user.getStats().getRekordZR()), String.valueOf(user.getStats().getGespielteSpiele()) };
 		outputObj.speichereUserAb(infos);
 	}
 

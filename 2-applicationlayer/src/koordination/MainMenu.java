@@ -5,6 +5,7 @@ import java.util.Scanner;
 import domain.code.Stats;
 import domain.code.User;
 import spiele.Galgenmaennchen;
+import spiele.ZahlenRaten;
 
 public class MainMenu {
 
@@ -15,7 +16,7 @@ public class MainMenu {
 	public static void main(String[] args) {
 		konverter = new KonverterFactory().getKonverter();
 		System.out.println(
-				"Willkommen bei der Spieleplattform Schiffsmännchen.\nFalls du bereits einen Account hast, nutze den Befehl 'LOG'."
+				"Willkommen bei der Spieleplattform ASE.\nFalls du bereits einen Account hast, nutze den Befehl 'LOG'."
 						+ "\nAnsonsten nutze den Befehl 'REG'.");
 		Scanner sc = new Scanner(System.in);
 		while (!anmelden(sc)) {
@@ -44,14 +45,14 @@ public class MainMenu {
 	private static boolean registrieren(Scanner sc) {
 		System.out.println("Bitte gib deinen zukünftigen Benutzernamen an:");
 		String username = sc.next();
-		user = new User(username, new Stats(0, 0, 0));
+		user = new User(username, new Stats(0, 100, 0));
 		konverter.speichereUser(user);
 		return true;
 	}
 
 	private static void starteSpieleplattform(User user, Scanner sc) {
-		System.out.println("Hey, mit dem Befehl 'GGM' startest du eine Runde Galgenmännchen."
-				+ "\nMit dem Befehl 'SV' startest du eine Runde Schiffe Versenken.\nMit dem Befehl 'STATS' kannst du dir deine bisherige Spielestatistik anschauen."
+		System.out.println("Hey, mit dem Befehl 'GGM' startest du eine Runde 'Galgenmännchen'."
+				+ "\nMit dem Befehl 'ZR' startest du eine Runde 'Zahlen Raten'.\nMit dem Befehl 'STATS' kannst du dir deine bisherige Spielestatistik anschauen."
 				+ "\nÜber 'SAVE' kannst du deinen Account mit der aktuellen Statistik abspeichern."
 				+ "\nÜber 'EXIT' kannst du das Spiel verlassen - denke daran, vorher zu speichern.");
 		boolean inLoop = true;
@@ -61,9 +62,11 @@ public class MainMenu {
 			switch (eingabe) {
 			case "GGM":
 				ggm = new Galgenmaennchen();
-				ggm.initGame(sc, user);
+				ggm.startGame(sc, user);
 				break;
-			case "SV":
+			case "ZR":
+				ZahlenRaten zr = new ZahlenRaten(sc, user);
+				zr.startGame();
 				break;
 			case "STATS":
 				break;

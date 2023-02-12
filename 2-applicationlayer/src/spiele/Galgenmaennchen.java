@@ -18,7 +18,7 @@ public class Galgenmaennchen {
 	List<Character> richtigeEingaben = new LinkedList<>();
 	List<Character> falscheEingaben = new LinkedList<>();
 
-	public void initGame(Scanner sc, User user) {
+	public void startGame(Scanner sc, User user) {
 		beforeGame();
 		System.out.println(
 				"Willkommen zu Galgenm‰nnchen!\nZum Starten gib einen Buchstaben von 'A'-'Z' an. (Groﬂschreibung beachten!)"

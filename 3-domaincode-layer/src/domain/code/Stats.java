@@ -3,36 +3,36 @@ package domain.code;
 public class Stats {
 
 	private int siegeGGM;
-	private int siegeSV;
+	private int rekordZR;
 	private int gespielteSpiele;
-
-	public int getSiegeGGM() {
-		return siegeGGM;
-	}
 
 	@Override
 	public String toString() {
-		return "Stats: Siege in Galgenmännchen = " + siegeGGM + ", Siege in Schiffe Versenken = " + siegeSV
-				+ ",  Insgesamt gespielte Spiele = " + gespielteSpiele;
+		return "Stats: Siege in Galgenmännchen: " + siegeGGM + ", Niedrigste Anzahl an Versuchen bei ZR: " + rekordZR
+				+ ",  Insgesamt gespielte Spiele: " + gespielteSpiele;
 	}
 
-	public Stats(int siegeGGM, int siegeSV, int gespielteSpiele) {
+	public Stats(int siegeGGM, int rekordZR, int gespielteSpiele) {
 		super();
 		this.siegeGGM = siegeGGM;
-		this.siegeSV = siegeSV;
+		this.rekordZR = rekordZR;
 		this.gespielteSpiele = gespielteSpiele;
+	}
+
+	public int getSiegeGGM() {
+		return siegeGGM;
 	}
 
 	public void setSiegeGGM(int siegeGGM) {
 		this.siegeGGM = siegeGGM;
 	}
 
-	public int getSiegeSV() {
-		return siegeSV;
+	public int getRekordZR() {
+		return rekordZR;
 	}
 
-	public void setSiegeSV(int siegeSV) {
-		this.siegeSV = siegeSV;
+	public void setRekordZR(int siegeSV) {
+		this.rekordZR = siegeSV;
 	}
 
 	public int getGespielteSpiele() {
