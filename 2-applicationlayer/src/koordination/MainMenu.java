@@ -61,14 +61,15 @@ public class MainMenu {
 			String eingabe = sc.next();
 			switch (eingabe) {
 			case "GGM":
-				ggm = new Galgenmaennchen();
-				ggm.startGame(sc, user);
+				ggm = new Galgenmaennchen(sc, user);
+				ggm.startGame();
 				break;
 			case "ZR":
 				ZahlenRaten zr = new ZahlenRaten(sc, user);
 				zr.startGame();
 				break;
 			case "STATS":
+				System.out.println(user.toString());
 				break;
 			case "SAVE":
 				konverter.speichereUser(user);

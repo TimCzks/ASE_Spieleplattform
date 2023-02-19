@@ -12,6 +12,7 @@ public class ZahlenRaten {
 	private User user;
 
 	public ZahlenRaten(Scanner sc, User user) {
+		super();
 		this.sc = sc;
 		this.user = user;
 		this.number = new Random().nextInt(100);

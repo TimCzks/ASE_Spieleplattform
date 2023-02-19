@@ -11,22 +11,30 @@ import koordination.KonverterInterface;
 
 public class Galgenmaennchen {
 
-	String loesungswort;
-	List<Character> checkObSieg = new LinkedList<>();
-	List<Character> wortUmgewandelt = new LinkedList<>();
-	List<Character> wort = new LinkedList<>();
-	List<Character> richtigeEingaben = new LinkedList<>();
-	List<Character> falscheEingaben = new LinkedList<>();
+	private String loesungswort;
+	private Scanner sc;
+	private User user;
+	private List<Character> checkObSieg = new LinkedList<>();
+	private List<Character> wortUmgewandelt = new LinkedList<>();
+	private List<Character> wort = new LinkedList<>();
+	private List<Character> richtigeEingaben = new LinkedList<>();
+	private List<Character> falscheEingaben = new LinkedList<>();
 
-	public void startGame(Scanner sc, User user) {
+	public Galgenmaennchen(Scanner sc, User user) {
+		super();
+		this.sc = sc;
+		this.user = user;
+	}
+
+	public void startGame() {
 		beforeGame();
 		System.out.println(
 				"Willkommen zu Galgenmännchen!\nZum Starten gib einen Buchstaben von 'A'-'Z' an. (Großschreibung beachten!)"
 						+ "\nMöchtest du das Spiel verlassen, gib jederzeit 'EXIT' ein.\n\nJetzt viel Spaß, wie lautet dein erster Buchstabe?");
 		boolean gameInProgress = true;
 		int lastingTries = 10;
-		lastingTries = gameOn(sc, gameInProgress, lastingTries);
-		validateEnding(user, lastingTries);
+		lastingTries = gameOn(gameInProgress, lastingTries);
+		validateEnding(lastingTries);
 	}
 
 	private void beforeGame() {
@@ -37,7 +45,7 @@ public class Galgenmaennchen {
 		wort = loesungswort.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
 	}
 
-	private int gameOn(Scanner sc, boolean gameInProgress, int lastingTries) {
+	private int gameOn(boolean gameInProgress, int lastingTries) {
 		CharSequence guess;
 		char guessedChar;
 		do {
@@ -59,7 +67,7 @@ public class Galgenmaennchen {
 		return lastingTries;
 	}
 
-	private void validateEnding(User user, int lastingTries) {
+	private void validateEnding(int lastingTries) {
 		if (lastingTries > 0) {
 			user.getStats().setSiegeGGM(user.getStats().getSiegeGGM() + 1);
 			user.getStats().setGespielteSpiele(user.getStats().getGespielteSpiele() + 1);
