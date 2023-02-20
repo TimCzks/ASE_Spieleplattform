@@ -2,21 +2,48 @@ package domain.code;
 
 public class Stats {
 
-	private int siegeGGM;
-	private int rekordZR;
-	private int gespielteSpiele;
+	private int siegeGGM, rekordZR, gespielteSpiele, siegeSSP, niederlagenSSP, unentschiedenSSP;
 
-	@Override
-	public String toString() {
-		return "Stats: Siege in Galgenmännchen: " + siegeGGM + ", Niedrigste Anzahl an Versuchen bei ZR: " + rekordZR
-				+ ",  Insgesamt gespielte Spiele: " + gespielteSpiele;
-	}
-
-	public Stats(int siegeGGM, int rekordZR, int gespielteSpiele) {
+	public Stats(int siegeGGM, int rekordZR, int siegeSSP, int niederlagenSSP, int unentschiedenSSP,
+			int gespielteSpiele) {
 		super();
 		this.siegeGGM = siegeGGM;
 		this.rekordZR = rekordZR;
 		this.gespielteSpiele = gespielteSpiele;
+		this.siegeSSP = siegeSSP;
+		this.niederlagenSSP = niederlagenSSP;
+		this.unentschiedenSSP = unentschiedenSSP;
+	}
+
+	@Override
+	public String toString() {
+		return "Stats:\nSiege in Galgenmännchen: " + siegeGGM + "\nNiedrigste Anzahl an Versuchen bei ZR: " + rekordZR
+				+ "\nSiege/Niederlagen/Unentschieden in SSP: " + siegeSSP + "/" + niederlagenSSP + "/"
+				+ unentschiedenSSP + "\nInsgesamt gespielte Spiele: " + gespielteSpiele;
+	}
+
+	public int getSiegeSSP() {
+		return siegeSSP;
+	}
+
+	public void setSiegeSSP(int siegeSSP) {
+		this.siegeSSP = siegeSSP;
+	}
+
+	public int getNiederlagenSSP() {
+		return niederlagenSSP;
+	}
+
+	public void setNiederlagenSSP(int niederlagenSSP) {
+		this.niederlagenSSP = niederlagenSSP;
+	}
+
+	public int getUnentschiedenSSP() {
+		return unentschiedenSSP;
+	}
+
+	public void setUnentschiedenSSP(int unentschiedenSSP) {
+		this.unentschiedenSSP = unentschiedenSSP;
 	}
 
 	public int getSiegeGGM() {

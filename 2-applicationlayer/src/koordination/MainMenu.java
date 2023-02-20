@@ -5,6 +5,7 @@ import java.util.Scanner;
 import domain.code.Stats;
 import domain.code.User;
 import spiele.Galgenmaennchen;
+import spiele.SchereSteinPapier;
 import spiele.ZahlenRaten;
 
 public class MainMenu {
@@ -12,6 +13,8 @@ public class MainMenu {
 	private static User user;
 	private static KonverterInterface konverter;
 	private static Galgenmaennchen ggm;
+	private static SchereSteinPapier ssp;
+	private static ZahlenRaten zr;
 
 	public static void main(String[] args) {
 		konverter = new KonverterFactory().getKonverter();
@@ -45,14 +48,15 @@ public class MainMenu {
 	private static boolean registrieren(Scanner sc) {
 		System.out.println("Bitte gib deinen zukünftigen Benutzernamen an:");
 		String username = sc.next();
-		user = new User(username, new Stats(0, 100, 0));
+		user = new User(username, new Stats(0, 100, 0, 0, 0, 0));
 		konverter.speichereUser(user);
 		return true;
 	}
 
 	private static void starteSpieleplattform(User user, Scanner sc) {
-		System.out.println("Hey, mit dem Befehl 'GGM' startest du eine Runde 'Galgenmännchen'."
-				+ "\nMit dem Befehl 'ZR' startest du eine Runde 'Zahlen Raten'.\nMit dem Befehl 'STATS' kannst du dir deine bisherige Spielestatistik anschauen."
+		System.out.println("Hey, mit 'GGM' startest du eine Runde 'Galgenmännchen'."
+				+ "\nMit 'SSP' startest du eine Runde 'Schere, Stein, Papier'."
+				+ "\nMit 'ZR' startest du eine Runde 'Zahlen Raten'.\nMit dem Befehl 'STATS' kannst du dir deine bisherige Spielestatistik anschauen."
 				+ "\nÜber 'SAVE' kannst du deinen Account mit der aktuellen Statistik abspeichern."
 				+ "\nÜber 'EXIT' kannst du das Spiel verlassen - denke daran, vorher zu speichern.");
 		boolean inLoop = true;
@@ -65,15 +69,19 @@ public class MainMenu {
 				ggm.startGame();
 				break;
 			case "ZR":
-				ZahlenRaten zr = new ZahlenRaten(sc, user);
+				zr = new ZahlenRaten(sc, user);
 				zr.startGame();
+				break;
+			case "SSP":
+				ssp = new SchereSteinPapier(sc, user);
+				ssp.startGame();
 				break;
 			case "STATS":
 				System.out.println(user.toString());
 				break;
 			case "SAVE":
 				konverter.speichereUser(user);
-				System.out.println("Erfolgreich gespeichert. " + user.toString());
+				System.out.println("Aktuelle Stats erfolgreich gespeichert.");
 				break;
 			case "EXIT":
 				inLoop = false;
