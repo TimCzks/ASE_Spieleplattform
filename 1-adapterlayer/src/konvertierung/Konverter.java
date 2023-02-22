@@ -40,4 +40,9 @@ public class Konverter implements KonverterInterface {
 		return ggmWoerter[new Random().nextInt(10)];
 	}
 
+	@Override
+	public boolean userExistiertBereits(String username) {
+		return inputObj.pruefeObUserBereitsExistiert(username);
+	}
+
 }

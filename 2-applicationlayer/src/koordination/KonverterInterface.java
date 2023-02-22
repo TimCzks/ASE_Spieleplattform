@@ -9,4 +9,6 @@ public interface KonverterInterface {
 	public void speichereUser(User user);
 
 	public String ermittleLoesungswort();
+
+	public boolean userExistiertBereits(String username);
 }

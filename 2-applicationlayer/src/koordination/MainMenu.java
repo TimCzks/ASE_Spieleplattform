@@ -48,6 +48,11 @@ public class MainMenu {
 	private static boolean registrieren(Scanner sc) {
 		System.out.println("Bitte gib deinen zukünftigen Benutzernamen an:");
 		String username = sc.next();
+		while (konverter.userExistiertBereits(username)) {
+			System.out.println(
+					"Der Benutzername '" + username + "' ist bereits vergeben, bitte wähle einen anderen Namen.");
+			username = sc.next();
+		}
 		user = new User(username, new Stats(0, 100, 0, 0, 0, 0));
 		konverter.speichereUser(user);
 		return true;

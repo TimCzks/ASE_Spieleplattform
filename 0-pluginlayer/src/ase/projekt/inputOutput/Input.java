@@ -47,4 +47,9 @@ public class Input implements InputInterface {
 		}
 		return s;
 	}
+
+	@Override
+	public boolean pruefeObUserBereitsExistiert(String username) {
+		return new File(PATH + username + ".txt").exists();
+	}
 }
