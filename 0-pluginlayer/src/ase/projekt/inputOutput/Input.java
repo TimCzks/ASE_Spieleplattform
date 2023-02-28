@@ -13,7 +13,7 @@ public class Input implements InputInterface {
 	private final String PATH = "./resources/";
 
 	@Override
-	public String[] leseUserDateiEin(String username) {
+	public String[] leseDatenVonUserDatei(String username) {
 		File f = new File(PATH + username + ".txt");
 		String[] s = null;
 		try {
@@ -31,7 +31,7 @@ public class Input implements InputInterface {
 	}
 
 	@Override
-	public String[] leseLoesungswoerterEin() {
+	public String[] leseLoesungswoerterVonDatei() {
 		File f = new File(PATH + "GalgenmaennchenWoerter.txt");
 		String[] s = null;
 		try {

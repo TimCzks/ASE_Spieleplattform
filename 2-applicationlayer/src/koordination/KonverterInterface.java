@@ -6,9 +6,9 @@ public interface KonverterInterface {
 
 	public User erstelleUser(String username);
 
-	public void speichereUser(User user);
+	public void speichereUserAb(User user);
 
 	public String ermittleLoesungswort();
 
-	public boolean userExistiertBereits(String username);
+	public boolean pruefeObUserBereitsExistiert(String username);
 }

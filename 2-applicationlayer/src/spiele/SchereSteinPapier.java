@@ -25,23 +25,28 @@ public class SchereSteinPapier {
 	}
 
 	public void startGame() {
-		beforeGame();
+		clearVariablesBeforeGame();
 		System.out.println(
 				"Willkommen bei Schere, Stein, Papier!\nZum Starten gib entweder 'SCHERE', 'STEIN' oder 'PAPIER' ein, "
 						+ "sobald du nicht mehr weiterspielen willst, gib 'EXIT' ein.");
+		starteSpielDurchlaeufeBisExit();
+		setStatsAfterGame();
+	}
+
+	private void starteSpielDurchlaeufeBisExit() {
 		boolean inGame = true;
 		Random r = new Random();
 		do {
-			auswahl = auswahlListe.get(r.nextInt(3));
+			auswahl = auswahlListe.get(r.nextInt(2));
 			switch (sc.next()) {
 			case "SCHERE":
-				gameRule("SCHERE", "STEIN");
+				System.out.println(gameRule("SCHERE", "STEIN"));
 				break;
 			case "STEIN":
-				gameRule("STEIN", "PAPIER");
+				System.out.println(gameRule("STEIN", "PAPIER"));
 				break;
 			case "PAPIER":
-				gameRule("PAPIER", "SCHERE");
+				System.out.println(gameRule("PAPIER", "SCHERE"));
 				break;
 			case "EXIT":
 				inGame = false;
@@ -52,31 +57,31 @@ public class SchereSteinPapier {
 				System.out.println("Eingabe nicht erkannt. Bitte achte auf die Schreibweise und versuche es erneut.");
 			}
 		} while (inGame);
-		afterGame();
 	}
 
-	private void gameRule(String equal, String lose) {
+	private String gameRule(String equal, String lose) {
+		anzahlSpiele++;
+		String comAuswahl = "COM-Gegner hat " + auswahl;
 		if (auswahl.equals(equal)) {
 			unentschieden++;
-			System.out.println("COM-Gegner hat " + auswahl + UNENTSCHIEDEN);
+			return comAuswahl + UNENTSCHIEDEN;
 		} else if (auswahl.equals(lose)) {
 			niederlagen++;
-			System.out.println("COM-Gegner hat " + auswahl + NIEDERLAGE);
+			return comAuswahl + NIEDERLAGE;
 		} else {
 			siege++;
-			System.out.println("COM-Gegner hat " + auswahl + SIEG);
+			return comAuswahl + SIEG;
 		}
-		anzahlSpiele++;
 	}
 
-	private void beforeGame() {
+	private void clearVariablesBeforeGame() {
 		niederlagen = 0;
 		siege = 0;
 		unentschieden = 0;
 		anzahlSpiele = 0;
 	}
 
-	private void afterGame() {
+	private void setStatsAfterGame() {
 		user.getStats().setSiegeSSP(user.getStats().getSiegeSSP() + siege);
 		user.getStats().setNiederlagenSSP(user.getStats().getNiederlagenSSP() + niederlagen);
 		user.getStats().setUnentschiedenSSP(user.getStats().getUnentschiedenSSP() + unentschieden);

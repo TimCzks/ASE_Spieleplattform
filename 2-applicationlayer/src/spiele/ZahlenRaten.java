@@ -15,7 +15,12 @@ public class ZahlenRaten {
 		super();
 		this.sc = sc;
 		this.user = user;
+		this.count = 0;
 		this.number = new Random().nextInt(100);
+	}
+
+	public ZahlenRaten(int number) {
+		this.number = number;
 	}
 
 	public int checkNumber(int guess) {
@@ -48,19 +53,18 @@ public class ZahlenRaten {
 				System.out.println("Die Zahl ist zu groß. Bisherige Anzahl Versuche: " + count);
 				break;
 			case 0:
-				spielende();
+				System.out.println(spielende());
 				inGame = false;
 				break;
 			}
 		} while (inGame);
 	}
 
-	private void spielende() {
-		System.out.println(
-				"Richtig getippt, die Zahl war " + number + ", und du hast " + ++count + " Versuche gebraucht!");
+	public String spielende() {
 		this.user.getStats().setGespielteSpiele(this.user.getStats().getGespielteSpiele() + 1);
-		if (this.user.getStats().getRekordZR() > count) {
+		if (this.user.getStats().getRekordZR() > ++count) {
 			this.user.getStats().setRekordZR(count);
 		}
+		return "Richtig getippt, die Zahl war " + number + ", und du hast " + count + " Versuche gebraucht!";
 	}
 }

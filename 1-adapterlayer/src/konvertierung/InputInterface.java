@@ -2,9 +2,9 @@ package konvertierung;
 
 public interface InputInterface {
 
-	public String[] leseUserDateiEin(String username);
+	public String[] leseDatenVonUserDatei(String username);
 
-	public String[] leseLoesungswoerterEin();
+	public String[] leseLoesungswoerterVonDatei();
 
 	public boolean pruefeObUserBereitsExistiert(String username);
 }

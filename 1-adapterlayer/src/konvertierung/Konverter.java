@@ -19,13 +19,13 @@ public class Konverter implements KonverterInterface {
 
 	@Override
 	public User erstelleUser(String username) {
-		String[] s = inputObj.leseUserDateiEin(username);
+		String[] s = inputObj.leseDatenVonUserDatei(username);
 		return new User(username, new Stats(Integer.parseInt(s[0]), Integer.parseInt(s[1]), Integer.parseInt(s[2]),
 				Integer.parseInt(s[3]), Integer.parseInt(s[4]), Integer.parseInt(s[5])));
 	}
 
 	@Override
-	public void speichereUser(User user) {
+	public void speichereUserAb(User user) {
 		String[] infos = new String[] { user.getUsername(), String.valueOf(user.getStats().getSiegeGGM()),
 				String.valueOf(user.getStats().getRekordZR()), String.valueOf(user.getStats().getSiegeSSP()),
 				String.valueOf(user.getStats().getNiederlagenSSP()),
@@ -36,12 +36,12 @@ public class Konverter implements KonverterInterface {
 
 	@Override
 	public String ermittleLoesungswort() {
-		String[] ggmWoerter = inputObj.leseLoesungswoerterEin();
+		String[] ggmWoerter = inputObj.leseLoesungswoerterVonDatei();
 		return ggmWoerter[new Random().nextInt(10)];
 	}
 
 	@Override
-	public boolean userExistiertBereits(String username) {
+	public boolean pruefeObUserBereitsExistiert(String username) {
 		return inputObj.pruefeObUserBereitsExistiert(username);
 	}
 
