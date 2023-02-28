@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import domain.code.Stats;
 import domain.code.User;
 
 public class SchereSteinPapier {
@@ -82,10 +83,11 @@ public class SchereSteinPapier {
 	}
 
 	private void setStatsAfterGame() {
-		user.getStats().setSiegeSSP(user.getStats().getSiegeSSP() + siege);
-		user.getStats().setNiederlagenSSP(user.getStats().getNiederlagenSSP() + niederlagen);
-		user.getStats().setUnentschiedenSSP(user.getStats().getUnentschiedenSSP() + unentschieden);
-		user.getStats().setGespielteSpiele(user.getStats().getGespielteSpiele() + anzahlSpiele);
+		Stats userStats = user.getStats();
+		userStats.setSiegeSSP(userStats.getSiegeSSP() + siege);
+		userStats.setNiederlagenSSP(userStats.getNiederlagenSSP() + niederlagen);
+		userStats.setUnentschiedenSSP(userStats.getUnentschiedenSSP() + unentschieden);
+		userStats.setGespielteSpiele(userStats.getGespielteSpiele() + anzahlSpiele);
 	}
 
 }
