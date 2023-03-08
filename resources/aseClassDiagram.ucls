@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="spiele.ZahlenRaten" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/2-applicationlayer/src/spiele/ZahlenRaten.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="515" y="771"/>    
+    <position height="-1" width="-1" x="1409" y="572"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -13,7 +13,7 @@
   <class id="2" language="java" name="spiele.SchereSteinPapier" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/2-applicationlayer/src/spiele/SchereSteinPapier.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1248" y="882"/>    
+    <position height="-1" width="-1" x="1553" y="953"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -22,7 +22,7 @@
   </class>  
   <class id="3" language="java" name="spiele.Galgenmaennchen" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/2-applicationlayer/src/spiele/Galgenmaennchen.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1661" y="770"/>    
+    <position height="-1" width="-1" x="1666" y="720"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -31,7 +31,7 @@
   </class>  
   <class id="4" language="java" name="koordination.MainMenu" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/2-applicationlayer/src/koordination/MainMenu.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="923" y="873"/>    
+    <position height="-1" width="-1" x="921" y="798"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -108,7 +108,7 @@
   </class>  
   <class id="12" language="java" name="domain.code.User" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/3-domaincode-layer/src/domain/code/User.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="932" y="1291"/>    
+    <position height="-1" width="-1" x="921" y="1292"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -118,7 +118,7 @@
   <class id="13" language="java" name="koordination.KonverterFactory" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/2-applicationlayer/src/koordination/KonverterFactory.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="935" y="196"/>    
+    <position height="-1" width="-1" x="929" y="168"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -146,7 +146,7 @@
   <class id="16" language="java" name="koordination.PlattformVerwaltung" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/2-applicationlayer/src/koordination/PlattformVerwaltung.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1247" y="681"/>    
+    <position height="-1" width="-1" x="1218" y="799"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -232,10 +232,10 @@
   <association id="38">    
     <end type="SOURCE" refId="4" navigable="false">      
       <attribute id="39" name="user">        
-        <position height="0" width="0" x="-338" y="80"/>      
+        <position height="0" width="0" x="-349" y="81"/>      
       </attribute>      
       <multiplicity id="40" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-338" y="80"/>      
+        <position height="0" width="0" x="-349" y="81"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    

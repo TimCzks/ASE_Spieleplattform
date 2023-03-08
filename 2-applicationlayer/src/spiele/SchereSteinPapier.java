@@ -26,10 +26,9 @@ public class SchereSteinPapier {
 				"Willkommen bei Schere, Stein, Papier!\nZum Starten gib entweder 'SCHERE', 'STEIN' oder 'PAPIER' ein, "
 						+ "sobald du nicht mehr weiterspielen willst, gib 'EXIT' ein.");
 		starteSpielDurchlaeufeBisExit();
-		validiereSpielergebnis();
 	}
 
-	private void starteSpielDurchlaeufeBisExit() {
+	public void starteSpielDurchlaeufeBisExit() {
 		boolean inGame = true;
 		Random r = new Random();
 		do {
@@ -55,13 +54,13 @@ public class SchereSteinPapier {
 		} while (inGame);
 	}
 
-	private String gameRule(String equal, String lose) {
+	public String gameRule(String equal, String lose) {
 		anzahlSpiele++;
-		String comAuswahl = "COM-Gegner hat " + auswahl;
-		if (auswahl.equals(equal)) {
+		String comAuswahl = "COM-Gegner hat " + getAuswahl();
+		if (getAuswahl().equals(equal)) {
 			unentschieden++;
 			return comAuswahl + UNENTSCHIEDEN;
-		} else if (auswahl.equals(lose)) {
+		} else if (getAuswahl().equals(lose)) {
 			niederlagen++;
 			return comAuswahl + NIEDERLAGE;
 		} else {
@@ -70,7 +69,7 @@ public class SchereSteinPapier {
 		}
 	}
 
-	private void clearVariablesBeforeGame() {
+	public void clearVariablesBeforeGame() {
 		niederlagen = 0;
 		siege = 0;
 		unentschieden = 0;
@@ -79,6 +78,10 @@ public class SchereSteinPapier {
 
 	public int[] validiereSpielergebnis() {
 		return new int[] { anzahlSpiele, siege, niederlagen, unentschieden };
+	}
+
+	public String getAuswahl() {
+		return auswahl;
 	}
 
 }
