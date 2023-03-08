@@ -5,9 +5,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-import domain.code.Stats;
-import domain.code.User;
-
 public class SchereSteinPapier {
 
 	private final List<String> auswahlListe = Arrays.asList(new String[] { "SCHERE", "STEIN", "PAPIER" });
@@ -15,14 +12,12 @@ public class SchereSteinPapier {
 	private final String NIEDERLAGE = ". Niederlage! Neuer Versuch?";
 	private final String SIEG = ". Sieg! Neuer Versuch?";
 	private Scanner sc;
-	private User user;
 	private int siege, niederlagen, unentschieden, anzahlSpiele;
 	private String auswahl;
 
-	public SchereSteinPapier(Scanner sc, User user) {
+	public SchereSteinPapier(Scanner sc) {
 		super();
 		this.sc = sc;
-		this.user = user;
 	}
 
 	public void startGame() {
@@ -31,7 +26,7 @@ public class SchereSteinPapier {
 				"Willkommen bei Schere, Stein, Papier!\nZum Starten gib entweder 'SCHERE', 'STEIN' oder 'PAPIER' ein, "
 						+ "sobald du nicht mehr weiterspielen willst, gib 'EXIT' ein.");
 		starteSpielDurchlaeufeBisExit();
-		setStatsAfterGame();
+		validiereSpielergebnis();
 	}
 
 	private void starteSpielDurchlaeufeBisExit() {
@@ -82,12 +77,8 @@ public class SchereSteinPapier {
 		anzahlSpiele = 0;
 	}
 
-	private void setStatsAfterGame() {
-		Stats userStats = user.getStats();
-		userStats.setSiegeSSP(userStats.getSiegeSSP() + siege);
-		userStats.setNiederlagenSSP(userStats.getNiederlagenSSP() + niederlagen);
-		userStats.setUnentschiedenSSP(userStats.getUnentschiedenSSP() + unentschieden);
-		userStats.setGespielteSpiele(userStats.getGespielteSpiele() + anzahlSpiele);
+	public int[] validiereSpielergebnis() {
+		return new int[] { anzahlSpiele, siege, niederlagen, unentschieden };
 	}
 
 }

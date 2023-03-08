@@ -42,9 +42,7 @@ class ZahlenRatenTest {
 
 	@Test
 	void testSpielende() {
-		Mockito.when(zrMockedClass.spielende())
-				.thenReturn("Richtig getippt, die Zahl war 67, und du hast 1 Versuche gebraucht!");
-		assertThat(zrMockedClass.spielende(),
-				is("Richtig getippt, die Zahl war 67, und du hast 1 Versuche gebraucht!"));
+		Mockito.when(zrMockedClass.validiereSpielergebnis()).thenReturn(10);
+		assertThat(zrMockedClass.validiereSpielergebnis(), is(10));
 	}
 }

@@ -3,18 +3,14 @@ package spiele;
 import java.util.Random;
 import java.util.Scanner;
 
-import domain.code.User;
-
 public class ZahlenRaten {
 	private final int number;
 	private int count;
 	private Scanner sc;
-	private User user;
 
-	public ZahlenRaten(Scanner sc, User user) {
+	public ZahlenRaten(Scanner sc) {
 		super();
 		this.sc = sc;
-		this.user = user;
 		this.count = 0;
 		this.number = new Random().nextInt(100);
 	}
@@ -53,18 +49,15 @@ public class ZahlenRaten {
 				System.out.println("Die Zahl ist zu groß. Bisherige Anzahl Versuche: " + count);
 				break;
 			case 0:
-				System.out.println(spielende());
 				inGame = false;
 				break;
 			}
 		} while (inGame);
 	}
 
-	public String spielende() {
-		this.user.getStats().setGespielteSpiele(this.user.getStats().getGespielteSpiele() + 1);
-		if (this.user.getStats().getRekordZR() > ++count) {
-			this.user.getStats().setRekordZR(count);
-		}
-		return "Richtig getippt, die Zahl war " + number + ", und du hast " + count + " Versuche gebraucht!";
+	public int validiereSpielergebnis() {
+		System.out
+				.println("Richtig getippt, die Zahl war " + number + ", und du hast " + count + " Versuche gebraucht!");
+		return ++count;
 	}
 }

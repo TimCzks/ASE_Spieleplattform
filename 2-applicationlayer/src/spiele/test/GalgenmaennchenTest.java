@@ -17,46 +17,42 @@ class GalgenmaennchenTest {
 
 	@BeforeEach
 	void setVariables() {
-		Mockito.doCallRealMethod().when(classUnderTest).setUser(Mockito.isA(User.class));
 		Mockito.doCallRealMethod().when(classUnderTest).setLoesungswort(Mockito.isA(String.class));
-		classUnderTest.setUser(userMock);
+		;
 		classUnderTest.setLoesungswort("Testwort");
 	}
 
 	@Test
 	void testStartGame() {
-		Mockito.when(classUnderTest.spielAblaufBisEnde(Mockito.isA(Boolean.class), Mockito.isA(Integer.class)))
-				.thenReturn(5);
+		Mockito.when(classUnderTest.spielAblaufBisEnde(Mockito.isA(Boolean.class))).thenReturn(5);
 		Mockito.doNothing().when(classUnderTest).clearVariablesBeforeGame();
-		Mockito.when(classUnderTest.validateEnding(Mockito.isA(Integer.class)))
-				.thenReturn("\nGlückwunsch, du hast gewonnen!");
-		Mockito.doCallRealMethod().when(classUnderTest).startGame();
-		classUnderTest.startGame();
-		Mockito.verify(classUnderTest, Mockito.times(1)).startGame();
+		Mockito.when(classUnderTest.validiereSpielergebnis(Mockito.isA(Integer.class))).thenReturn(1);
+		Mockito.doCallRealMethod().when(classUnderTest).starteSpiel();
+		classUnderTest.starteSpiel();
+		Mockito.verify(classUnderTest, Mockito.times(1)).starteSpiel();
 	}
 
 	@Test
 	void testSpielAblaufBisEnde() {
-		Mockito.when(classUnderTest.spielAblaufBisEnde(Mockito.isA(Boolean.class), Mockito.isA(Integer.class)))
-				.thenReturn(5);
-		assertEquals(5, classUnderTest.spielAblaufBisEnde(true, 10));
+		Mockito.when(classUnderTest.spielAblaufBisEnde(Mockito.isA(Boolean.class))).thenReturn(5);
+		assertEquals(5, classUnderTest.spielAblaufBisEnde(true));
 	}
 
 	@Test
 	void testValidateEndingSieg() {
-		Mockito.doCallRealMethod().when(classUnderTest).validateEnding(Mockito.isA(Integer.class));
+		Mockito.doCallRealMethod().when(classUnderTest).validiereSpielergebnis(Mockito.isA(Integer.class));
 		Mockito.when(userMock.getStats()).thenReturn(statsMock);
 		Mockito.doNothing().when(statsMock).setGespielteSpiele(Mockito.isA(Integer.class));
 		Mockito.doNothing().when(statsMock).setSiegeGGM(Mockito.isA(Integer.class));
-		assertEquals("\nGlückwunsch, du hast gewonnen!", classUnderTest.validateEnding(10));
+		assertEquals(1, classUnderTest.validiereSpielergebnis(10));
 	}
 
 	@Test
 	void testValidateEndingNiederlage() {
-		Mockito.doCallRealMethod().when(classUnderTest).validateEnding(Mockito.isA(Integer.class));
+		Mockito.doCallRealMethod().when(classUnderTest).validiereSpielergebnis(Mockito.isA(Integer.class));
 		Mockito.when(userMock.getStats()).thenReturn(statsMock);
 		Mockito.doNothing().when(statsMock).setGespielteSpiele(Mockito.isA(Integer.class));
-		assertEquals("\nDu hast leider verloren. Das gesuchte Wort war Testwort.", classUnderTest.validateEnding(0));
+		assertEquals(0, classUnderTest.validiereSpielergebnis(0));
 	}
 
 }

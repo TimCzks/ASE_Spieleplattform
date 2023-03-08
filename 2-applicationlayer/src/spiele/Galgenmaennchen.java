@@ -5,36 +5,32 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import domain.code.User;
 import koordination.KonverterFactory;
 import koordination.KonverterInterface;
 
 public class Galgenmaennchen {
 
 	private String loesungswort;
+	private int lastingTries = 10;
 	private Scanner sc;
-	private User user;
 	private List<Character> checkObSieg = new LinkedList<>();
 	private List<Character> wortUmgewandelt = new LinkedList<>();
 	private List<Character> wort = new LinkedList<>();
 	private List<Character> richtigeEingaben = new LinkedList<>();
 	private List<Character> falscheEingaben = new LinkedList<>();
 
-	public Galgenmaennchen(Scanner sc, User user) {
+	public Galgenmaennchen(Scanner sc) {
 		super();
 		this.sc = sc;
-		this.setUser(user);
 	}
 
-	public void startGame() {
+	public void starteSpiel() {
 		clearVariablesBeforeGame();
 		System.out.println(
 				"Willkommen zu Galgenmännchen!\nZum Starten gib einen Buchstaben von 'A'-'Z' an. (Großschreibung beachten!)"
 						+ "\nMöchtest du das Spiel verlassen, gib jederzeit 'EXIT' ein.\n\nJetzt viel Spaß, wie lautet dein erster Buchstabe?");
 		boolean gameInProgress = true;
-		int lastingTries = 10;
-		lastingTries = spielAblaufBisEnde(gameInProgress, lastingTries);
-		System.out.println(validateEnding(lastingTries));
+		lastingTries = spielAblaufBisEnde(gameInProgress);
 	}
 
 	public void clearVariablesBeforeGame() {
@@ -42,11 +38,12 @@ public class Galgenmaennchen {
 		richtigeEingaben.clear();
 		falscheEingaben.clear();
 		checkObSieg.clear();
+		lastingTries = 10;
 		createLoesungswort();
 		wort = loesungswort.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
 	}
 
-	public int spielAblaufBisEnde(boolean gameInProgress, int lastingTries) {
+	public int spielAblaufBisEnde(boolean gameInProgress) {
 		CharSequence guess;
 		char guessedChar;
 		do {
@@ -62,20 +59,9 @@ public class Galgenmaennchen {
 				lastingTries -= 1;
 				System.out.println("Falsch geraten. Noch " + lastingTries + " Versuche!" + " Bisherige Versuche:\n"
 						+ falscheEingaben.toString() + " Aktueller Fortschritt: " + wortUmgewandelt.toString());
-
 			}
 		} while (gameInProgress && lastingTries > 0);
 		return lastingTries;
-	}
-
-	public String validateEnding(int lastingTries) {
-		user.getStats().setGespielteSpiele(user.getStats().getGespielteSpiele() + 1);
-		if (lastingTries > 0) {
-			user.getStats().setSiegeGGM(user.getStats().getSiegeGGM() + 1);
-			return "\nGlückwunsch, du hast gewonnen!";
-		} else {
-			return "\nDu hast leider verloren. Das gesuchte Wort war " + loesungswort + ".";
-		}
 	}
 
 	private void createLoesungswort() {
@@ -99,12 +85,22 @@ public class Galgenmaennchen {
 		System.out.println("Richtig geraten, aktueller Fortschitt: " + wortUmgewandelt.toString());
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public int validiereSpielergebnis(int lastingTries) {
+		if (lastingTries > 0) {
+			System.out.println("\nGlückwunsch, du hast gewonnen!");
+			return 1;
+		} else {
+			System.out.println("\nDu hast leider verloren. Das gesuchte Wort war " + loesungswort + ".");
+			return 0;
+		}
 	}
 
 	public void setLoesungswort(String loesungswort) {
 		this.loesungswort = loesungswort;
+	}
+
+	public int getLastingTries() {
+		return lastingTries;
 	}
 
 }

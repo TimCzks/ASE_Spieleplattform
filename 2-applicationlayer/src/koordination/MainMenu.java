@@ -47,7 +47,7 @@ public class MainMenu {
 
 	private static boolean registrieren(Scanner sc, String username) {
 		while (konverter.pruefeObUserBereitsExistiert(username)) {
-			System.out.println("Der Benutzername '" + username + "' ist bereits vergeben, bitte w�hle einen Neuen.");
+			System.out.println("Der Benutzername '" + username + "' ist bereits vergeben, bitte wähle einen Neuen.");
 			username = sc.next();
 		}
 		user = new User(username, new Stats(0, 100, 0, 0, 0, 0));
@@ -63,20 +63,36 @@ public class MainMenu {
 				+ "\n�ber 'EXIT' kannst du das Spiel verlassen - denke daran, vorher zu speichern.");
 		boolean inLoop = true;
 		do {
+
 			System.out.println("\nWas möchtest du tun?");
 			String eingabe = sc.next();
 			switch (eingabe) {
 			case "GGM":
-				ggm = new Galgenmaennchen(sc, user);
-				ggm.startGame();
+				ggm = new Galgenmaennchen(sc);
+				ggm.starteSpiel();
+				user.getStats()
+						.setSiegeGGM(user.getStats().getSiegeGGM() + ggm.validiereSpielergebnis(ggm.getLastingTries()));
+				user.getStats().setGespielteSpiele(user.getStats().getGespielteSpiele() + 1);
 				break;
 			case "ZR":
-				zr = new ZahlenRaten(sc, user);
+				zr = new ZahlenRaten(sc);
 				zr.startGame();
+				int spielergebnis = zr.validiereSpielergebnis();
+				user.getStats().setGespielteSpiele(user.getStats().getGespielteSpiele() + 1);
+				if (user.getStats().getRekordZR() > spielergebnis) {
+					user.getStats().setRekordZR(spielergebnis);
+				}
 				break;
 			case "SSP":
-				ssp = new SchereSteinPapier(sc, user);
+				ssp = new SchereSteinPapier(sc);
 				ssp.startGame();
+				user.getStats().setSiegeSSP(user.getStats().getSiegeSSP() + ssp.validiereSpielergebnis()[1]);
+				user.getStats()
+						.setNiederlagenSSP(user.getStats().getNiederlagenSSP() + ssp.validiereSpielergebnis()[2]);
+				user.getStats()
+						.setUnentschiedenSSP(user.getStats().getUnentschiedenSSP() + ssp.validiereSpielergebnis()[3]);
+				user.getStats()
+						.setGespielteSpiele(user.getStats().getGespielteSpiele() + ssp.validiereSpielergebnis()[0]);
 				break;
 			case "STATS":
 				System.out.println(user.toString());
