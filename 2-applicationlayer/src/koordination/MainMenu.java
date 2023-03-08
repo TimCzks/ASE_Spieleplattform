@@ -47,7 +47,7 @@ public class MainMenu {
 
 	private static boolean registrieren(Scanner sc, String username) {
 		while (konverter.pruefeObUserBereitsExistiert(username)) {
-			System.out.println("Der Benutzername '" + username + "' ist bereits vergeben, bitte wähle einen Neuen.");
+			System.out.println("Der Benutzername '" + username + "' ist bereits vergeben, bitte wï¿½hle einen Neuen.");
 			username = sc.next();
 		}
 		user = new User(username, new Stats(0, 100, 0, 0, 0, 0));
@@ -56,14 +56,14 @@ public class MainMenu {
 	}
 
 	private static void starteSpieleplattform(User user, Scanner sc) {
-		System.out.println("Hey, mit 'GGM' startest du eine Runde 'Galgenmännchen'."
+		System.out.println("Hey, mit 'GGM' startest du eine Runde 'GalgenmÃ¤nnchen'."
 				+ "\nMit 'SSP' startest du eine Runde 'Schere, Stein, Papier'."
 				+ "\nMit 'ZR' startest du eine Runde 'Zahlen Raten'.\nMit dem Befehl 'STATS' kannst du dir deine bisherige Spielestatistik anschauen."
-				+ "\nÜber 'SAVE' kannst du deinen Account mit der aktuellen Statistik abspeichern."
-				+ "\nÜber 'EXIT' kannst du das Spiel verlassen - denke daran, vorher zu speichern.");
+				+ "\nï¿½ber 'SAVE' kannst du deinen Account mit der aktuellen Statistik abspeichern."
+				+ "\nï¿½ber 'EXIT' kannst du das Spiel verlassen - denke daran, vorher zu speichern.");
 		boolean inLoop = true;
 		do {
-			System.out.println("\nWas möchtest du tun?");
+			System.out.println("\nWas mÃ¶chtest du tun?");
 			String eingabe = sc.next();
 			switch (eingabe) {
 			case "GGM":
@@ -87,7 +87,7 @@ public class MainMenu {
 				break;
 			case "EXIT":
 				inLoop = false;
-				System.out.println("Bis zum nächsten mal!");
+				System.out.println("Bis zum nÃ¤chsten mal!");
 				break;
 			default:
 				System.out.println("Eingabe nicht erkannt. Bitte achte auf die Schreibweise und versuche es erneut.");

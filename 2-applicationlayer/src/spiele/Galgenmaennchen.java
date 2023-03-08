@@ -29,8 +29,8 @@ public class Galgenmaennchen {
 	public void startGame() {
 		clearVariablesBeforeGame();
 		System.out.println(
-				"Willkommen zu Galgenmännchen!\nZum Starten gib einen Buchstaben von 'A'-'Z' an. (Großschreibung beachten!)"
-						+ "\nMöchtest du das Spiel verlassen, gib jederzeit 'EXIT' ein.\n\nJetzt viel Spaß, wie lautet dein erster Buchstabe?");
+				"Willkommen zu GalgenmÃ¤nnchen!\nZum Starten gib einen Buchstaben von 'A'-'Z' an. (GroÃŸschreibung beachten!)"
+						+ "\nMÃ¶chtest du das Spiel verlassen, gib jederzeit 'EXIT' ein.\n\nJetzt viel SpaÃŸ, wie lautet dein erster Buchstabe?");
 		boolean gameInProgress = true;
 		int lastingTries = 10;
 		lastingTries = spielAblaufBisEnde(gameInProgress, lastingTries);
@@ -72,7 +72,7 @@ public class Galgenmaennchen {
 		user.getStats().setGespielteSpiele(user.getStats().getGespielteSpiele() + 1);
 		if (lastingTries > 0) {
 			user.getStats().setSiegeGGM(user.getStats().getSiegeGGM() + 1);
-			return "\nGlückwunsch, du hast gewonnen!";
+			return "\nGlÃ¼ckwunsch, du hast gewonnen!";
 		} else {
 			return "\nDu hast leider verloren. Das gesuchte Wort war " + loesungswort + ".";
 		}

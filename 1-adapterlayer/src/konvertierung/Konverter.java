@@ -37,7 +37,7 @@ public class Konverter implements KonverterInterface {
 	@Override
 	public String ermittleLoesungswort() {
 		String[] ggmWoerter = inputObj.leseLoesungswoerterVonDatei();
-		return ggmWoerter[new Random().nextInt(10)];
+		return ggmWoerter[new Random().nextInt(ggmWoerter.length)];
 	}
 
 	@Override
@@ -45,4 +45,12 @@ public class Konverter implements KonverterInterface {
 		return inputObj.pruefeObUserBereitsExistiert(username);
 	}
 
+	public String ermittleLoesungswort(int wortAnzahl) {
+		String[] ggmWoerter = inputObj.leseLoesungswoerterVonDatei();
+		return ggmWoerter[new Random().nextInt(wortAnzahl)];
+	}
+
+	public void setInputObj(InputInterface inputObj) {
+		this.inputObj = inputObj;
+	}
 }

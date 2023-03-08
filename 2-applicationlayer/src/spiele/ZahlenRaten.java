@@ -50,7 +50,7 @@ public class ZahlenRaten {
 				break;
 			case 1:
 				count++;
-				System.out.println("Die Zahl ist zu groﬂ. Bisherige Anzahl Versuche: " + count);
+				System.out.println("Die Zahl ist zu gro√ü. Bisherige Anzahl Versuche: " + count);
 				break;
 			case 0:
 				System.out.println(spielende());

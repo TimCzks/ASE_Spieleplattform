@@ -17,7 +17,7 @@ public class Stats {
 
 	@Override
 	public String toString() {
-		return "Stats:\nSiege in Galgenm‰nnchen: " + siegeGGM + "\nNiedrigste Anzahl an Versuchen bei ZR: " + rekordZR
+		return "Stats:\nSiege in Galgenm√§nnchen: " + siegeGGM + "\nNiedrigste Anzahl an Versuchen bei ZR: " + rekordZR
 				+ "\nSiege/Niederlagen/Unentschieden in SSP: " + siegeSSP + "/" + niederlagenSSP + "/"
 				+ unentschiedenSSP + "\nInsgesamt gespielte Spiele: " + gespielteSpiele;
 	}

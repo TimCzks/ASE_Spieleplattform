@@ -29,7 +29,7 @@ class GalgenmaennchenTest {
 				.thenReturn(5);
 		Mockito.doNothing().when(classUnderTest).clearVariablesBeforeGame();
 		Mockito.when(classUnderTest.validateEnding(Mockito.isA(Integer.class)))
-				.thenReturn("\nGlückwunsch, du hast gewonnen!");
+				.thenReturn("\nGlÃ¼ckwunsch, du hast gewonnen!");
 		Mockito.doCallRealMethod().when(classUnderTest).startGame();
 		classUnderTest.startGame();
 		Mockito.verify(classUnderTest, Mockito.times(1)).startGame();
@@ -48,7 +48,7 @@ class GalgenmaennchenTest {
 		Mockito.when(userMock.getStats()).thenReturn(statsMock);
 		Mockito.doNothing().when(statsMock).setGespielteSpiele(Mockito.isA(Integer.class));
 		Mockito.doNothing().when(statsMock).setSiegeGGM(Mockito.isA(Integer.class));
-		assertEquals("\nGlückwunsch, du hast gewonnen!", classUnderTest.validateEnding(10));
+		assertEquals("\nGlÃ¼ckwunsch, du hast gewonnen!", classUnderTest.validateEnding(10));
 	}
 
 	@Test
