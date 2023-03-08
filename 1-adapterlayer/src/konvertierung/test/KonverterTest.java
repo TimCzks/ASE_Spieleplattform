@@ -24,7 +24,7 @@ class KonverterTest {
 
 	@Test
 	void testErstelleUser() {
-		Mockito.when(input.leseDatenVonUserDatei(Mockito.isA(String.class)))
+		Mockito.when(input.leseDatenVonDatei(Mockito.isA(String.class), Mockito.isA(String.class)))
 				.thenReturn(new String[] { "0", "0", "0", "0", "0", "0" });
 		Mockito.doCallRealMethod().when(classUnderTest).erstelleUser(Mockito.isA(String.class));
 		User userByMethod = classUnderTest.erstelleUser("username");
@@ -34,7 +34,8 @@ class KonverterTest {
 
 	@Test
 	void testErmittleLoesungswort() {
-		Mockito.when(input.leseLoesungswoerterVonDatei()).thenReturn(new String[] { "Loesungswort" });
+		Mockito.when(input.leseDatenVonDatei("GalgenmaennchenWoerter", ","))
+				.thenReturn(new String[] { "Loesungswort" });
 		Mockito.doCallRealMethod().when(classUnderTest).ermittleLoesungswort(Mockito.isA(Integer.class));
 		assertEquals("Loesungswort", classUnderTest.ermittleLoesungswort(1));
 	}

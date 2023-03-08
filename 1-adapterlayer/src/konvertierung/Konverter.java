@@ -19,7 +19,7 @@ public class Konverter implements KonverterInterface {
 
 	@Override
 	public User erstelleUser(String username) {
-		String[] s = inputObj.leseDatenVonUserDatei(username);
+		String[] s = inputObj.leseDatenVonDatei(username, ",");
 		return new User(username, new Stats(Integer.parseInt(s[0]), Integer.parseInt(s[1]), Integer.parseInt(s[2]),
 				Integer.parseInt(s[3]), Integer.parseInt(s[4]), Integer.parseInt(s[5])));
 	}
@@ -36,7 +36,7 @@ public class Konverter implements KonverterInterface {
 
 	@Override
 	public String ermittleLoesungswort() {
-		String[] ggmWoerter = inputObj.leseLoesungswoerterVonDatei();
+		String[] ggmWoerter = inputObj.leseDatenVonDatei("GalgenmaennchenWoerter", ",");
 		return ggmWoerter[new Random().nextInt(ggmWoerter.length)];
 	}
 
@@ -46,7 +46,7 @@ public class Konverter implements KonverterInterface {
 	}
 
 	public String ermittleLoesungswort(int wortAnzahl) {
-		String[] ggmWoerter = inputObj.leseLoesungswoerterVonDatei();
+		String[] ggmWoerter = inputObj.leseDatenVonDatei("GalgenmaennchenWoerter", ",");
 		return ggmWoerter[new Random().nextInt(wortAnzahl)];
 	}
 

@@ -13,13 +13,13 @@ public class Input implements InputInterface {
 	private final String PATH = "./resources/";
 
 	@Override
-	public String[] leseDatenVonUserDatei(String username) {
-		File f = new File(PATH + username + ".txt");
-		String[] s = null;
+	public String[] leseDatenVonDatei(String dateiname, String seperator) {
+		File f = new File(PATH + dateiname + ".txt");
+		String[] geleseneWoerter = null;
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(f));
 			while (br.ready()) {
-				s = br.readLine().split(",");
+				geleseneWoerter = br.readLine().split(seperator);
 			}
 			br.close();
 		} catch (FileNotFoundException e) {
@@ -27,25 +27,7 @@ public class Input implements InputInterface {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return s;
-	}
-
-	@Override
-	public String[] leseLoesungswoerterVonDatei() {
-		File f = new File(PATH + "GalgenmaennchenWoerter.txt");
-		String[] s = null;
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(f));
-			while (br.ready()) {
-				s = br.readLine().split(",");
-			}
-			br.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return s;
+		return geleseneWoerter;
 	}
 
 	@Override
