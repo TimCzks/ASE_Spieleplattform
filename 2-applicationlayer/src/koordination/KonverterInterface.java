@@ -8,7 +8,7 @@ public interface KonverterInterface {
 
 	public void speichereUserAb(User user);
 
-	public String ermittleLoesungswort();
+	public String ermittleLoesungswortFuerGalgenmaennchen();
 
 	public boolean pruefeObUserBereitsExistiert(String username);
 }

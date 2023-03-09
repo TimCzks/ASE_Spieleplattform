@@ -35,7 +35,7 @@ public class Konverter implements KonverterInterface {
 	}
 
 	@Override
-	public String ermittleLoesungswort() {
+	public String ermittleLoesungswortFuerGalgenmaennchen() {
 		String[] ggmWoerter = inputObj.leseDatenVonDatei("GalgenmaennchenWoerter", ",");
 		return ggmWoerter[new Random().nextInt(ggmWoerter.length)];
 	}
