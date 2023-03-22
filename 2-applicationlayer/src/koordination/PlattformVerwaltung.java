@@ -42,6 +42,9 @@ public class PlattformVerwaltung {
 				MainMenu.konverter.speichereUserAb(user);
 				System.out.println("Aktuelle Stats erfolgreich gespeichert.");
 				break;
+			case "HELP":
+				getHelp();
+				System.out.println("\nWas möchtest du tun?");
 			case "EXIT":
 				inLoop = false;
 				System.out.println("Bis zum nächsten mal!");
@@ -56,6 +59,7 @@ public class PlattformVerwaltung {
 		System.out.println("Hey, mit 'GGM' startest du eine Runde 'Galgenmännchen'."
 				+ "\nMit 'SSP' startest du eine Runde 'Schere, Stein, Papier'."
 				+ "\nMit 'ZR' startest du eine Runde 'Zahlen Raten'.\nMit dem Befehl 'STATS' kannst du dir deine bisherige Spielestatistik anschauen."
+				+ "\nüber 'HELP' bekommst du eine Übersicht über alle nutzbaren Befehle."
 				+ "\nüber 'SAVE' kannst du deinen Account mit der aktuellen Statistik abspeichern."
 				+ "\nüber 'EXIT' kannst du das Spiel verlassen - denke daran, vorher zu speichern.");
 	}
@@ -84,6 +88,15 @@ public class PlattformVerwaltung {
 		user.getStats().setNiederlagenSSP(user.getStats().getNiederlagenSSP() + ssp.validiereSpielergebnis()[2]);
 		user.getStats().setUnentschiedenSSP(user.getStats().getUnentschiedenSSP() + ssp.validiereSpielergebnis()[3]);
 		user.getStats().setGespielteSpiele(user.getStats().getGespielteSpiele() + ssp.validiereSpielergebnis()[0]);
+	}
+
+	private void getHelp() {
+		System.out.println("Hier findest du alle nutzbaren Befehle:" + "\n'GGM': Startet eine Runde 'Galgenmännchen'."
+				+ "\n'SSP': Startet eine Runde 'Schere, Stein, Papier'." + "\n'ZR': Startet eine Runde 'Zahlen Raten'."
+				+ "\n'STATS': Lasse dir deine bisherige Spielestatistik anzeigen."
+				+ "\n'SAVE': Speichere deinen Account mit der aktuellen Statistik ab."
+				+ "\n'HELP': Lasse dir alle nutzbaren Befehle anzeigen."
+				+ "\n'EXIT': Verlassen der Spieleplattform - denke daran, vorher zu speichern.");
 	}
 
 }

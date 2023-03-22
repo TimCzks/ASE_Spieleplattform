@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="spiele.ZahlenRaten" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/2-applicationlayer/src/spiele/ZahlenRaten.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1410" y="708"/>    
+    <position height="-1" width="-1" x="1403" y="630"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -13,7 +13,7 @@
   <class id="2" language="java" name="spiele.SchereSteinPapier" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/2-applicationlayer/src/spiele/SchereSteinPapier.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1554" y="1089"/>    
+    <position height="-1" width="-1" x="1561" y="967"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -22,7 +22,7 @@
   </class>  
   <class id="3" language="java" name="spiele.Galgenmaennchen" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/2-applicationlayer/src/spiele/Galgenmaennchen.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1667" y="856"/>    
+    <position height="-1" width="-1" x="1624" y="744"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -41,7 +41,7 @@
   <interface id="5" language="java" name="koordination.ErbauerInterface" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/2-applicationlayer/src/koordination/ErbauerInterface.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="507" y="557"/>    
+    <position height="-1" width="-1" x="542" y="624"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -51,7 +51,7 @@
   <interface id="6" language="java" name="konvertierung.InputInterface" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/1-adapterlayer/src/konvertierung/InputInterface.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="431" y="119"/>    
+    <position height="-1" width="-1" x="420" y="372"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -61,7 +61,7 @@
   <class id="7" language="java" name="konvertierung.ErbauerKonverter" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/1-adapterlayer/src/konvertierung/ErbauerKonverter.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="923" y="355"/>    
+    <position height="-1" width="-1" x="923" y="365"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -71,7 +71,7 @@
   <interface id="8" language="java" name="konvertierung.OutputInterface" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/1-adapterlayer/src/konvertierung/OutputInterface.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1380" y="115"/>    
+    <position height="-1" width="-1" x="1341" y="363"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -81,7 +81,7 @@
   <class id="9" language="java" name="ase.projekt.inputOutput.Input" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/0-pluginlayer/src/ase/projekt/inputOutput/Input.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="433" y="315"/>    
+    <position height="-1" width="-1" x="415" y="156"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -91,7 +91,7 @@
   <class id="10" language="java" name="ase.projekt.inputOutput.Output" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/0-pluginlayer/src/ase/projekt/inputOutput/Output.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="106" width="203" x="1275" y="210"/>    
+    <position height="106" width="203" x="1239" y="107"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -116,94 +116,86 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="koordination.KonverterFactory" project="ASE_Spieleplattform" 
-    file="/ASE_Spieleplattform/2-applicationlayer/src/koordination/KonverterFactory.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="929" y="168"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="14" language="java" name="konvertierung.OutputFactory" project="ASE_Spieleplattform" 
-    file="/ASE_Spieleplattform/1-adapterlayer/src/konvertierung/OutputFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1575" y="265"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="15" language="java" name="konvertierung.InputFactory" project="ASE_Spieleplattform" 
-    file="/ASE_Spieleplattform/1-adapterlayer/src/konvertierung/InputFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="647" y="321"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="16" language="java" name="koordination.PlattformVerwaltung" project="ASE_Spieleplattform" 
+  <class id="13" language="java" name="koordination.PlattformVerwaltung" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/2-applicationlayer/src/koordination/PlattformVerwaltung.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1213" y="957"/>    
+    <position height="-1" width="-1" x="1206" y="879"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="koordination.DirektorKonverter" project="ASE_Spieleplattform" 
+  <class id="14" language="java" name="koordination.DirektorKonverter" project="ASE_Spieleplattform" 
     file="/ASE_Spieleplattform/2-applicationlayer/src/koordination/DirektorKonverter.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="918" y="620"/>    
+    <position height="-1" width="-1" x="541" y="873"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="18">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="19" name="konverter"/>      
-      <multiplicity id="20" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="21">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="22" name="zr">        
-        <position height="0" width="0" x="1" y="136"/>      
+  <association id="15">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="16" name="outputObj">        
+        <position height="0" width="0" x="-39" y="248"/>      
       </attribute>      
-      <multiplicity id="23" minimum="0" maximum="1">        
-        <position height="0" width="0" x="1" y="136"/>      
+      <multiplicity id="17" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-39" y="248"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="24">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="25" name="ggm">        
-        <position height="0" width="0" x="1" y="136"/>      
+  <association id="18">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="19" name="ggm">        
+        <position height="0" width="0" x="-42" y="24"/>      
       </attribute>      
-      <multiplicity id="26" minimum="0" maximum="1">        
-        <position height="0" width="0" x="1" y="136"/>      
+      <multiplicity id="20" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-42" y="24"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="27">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="28" name="erbauer"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
+  <realization id="21">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <association id="22">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="23" name="zr">        
+        <position height="0" width="0" x="-6" y="58"/>      
+      </attribute>      
+      <multiplicity id="24" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-6" y="58"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="25">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="26" name="ssp">        
+        <position height="0" width="0" x="8" y="14"/>      
+      </attribute>      
+      <multiplicity id="27" minimum="0" maximum="1">        
+        <position height="0" width="0" x="8" y="14"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="28">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <realization id="29">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
   <association id="30">    
     <end type="SOURCE" refId="12" navigable="false">      
       <attribute id="31" name="stats">        
@@ -216,64 +208,52 @@
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="33">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <association id="34">    
+  <association id="33">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="35" name="outputObj">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <attribute id="34" name="inputObj">        
+        <position height="0" width="0" x="-11" y="253"/>      
       </attribute>      
-      <multiplicity id="36" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="35" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-11" y="253"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="37">    
+  <association id="36">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="38" name="user">        
+      <attribute id="37" name="konverter">        
+        <position height="0" width="0" x="-377" y="253"/>      
+      </attribute>      
+      <multiplicity id="38" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-377" y="253"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="39">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="40" name="erbauer">        
+        <position height="0" width="0" x="35" y="67"/>      
+      </attribute>      
+      <multiplicity id="41" minimum="0" maximum="1">        
+        <position height="0" width="0" x="35" y="67"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="42">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="43" name="user">        
         <position height="0" width="0" x="-349" y="81"/>      
       </attribute>      
-      <multiplicity id="39" minimum="0" maximum="1">        
+      <multiplicity id="44" minimum="0" maximum="1">        
         <position height="0" width="0" x="-349" y="81"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="40">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="8"/>  
-  </realization>  
-  <association id="41">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="42" name="ssp">        
-        <position height="0" width="0" x="1" y="136"/>      
-      </attribute>      
-      <multiplicity id="43" minimum="0" maximum="1">        
-        <position height="0" width="0" x="1" y="136"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="44">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="6"/>  
-  </realization>  
-  <association id="45">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="46" name="inputObj">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="47" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
