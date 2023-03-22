@@ -8,11 +8,10 @@ import domain.code.User;
 public class MainMenu {
 
 	private static User user;
-	public static KonverterInterface konverter;
-	private static PlattformVerwaltung spieleplattform;
+	public static DirektorKonverter konverter;
 
 	public static void main(String[] args) {
-		konverter = new KonverterFactory().getKonverter();
+		konverter = new DirektorKonverter();
 		System.out.println(
 				"Willkommen bei der Spieleplattform ASE.\nFalls du bereits einen Account hast, nutze den Befehl 'LOG'."
 						+ "\nAnsonsten nutze den Befehl 'REG'.");
@@ -21,16 +20,17 @@ public class MainMenu {
 			System.out.println("Eingabe nicht erkannt. Bitte achte auf die Schreibweise und versuche es erneut.");
 		}
 		System.out.println("Du bist erfolgreich eingeloggt als " + user.getUsername() + ".\n");
-		spieleplattform = new PlattformVerwaltung(user, sc);
+		new PlattformVerwaltung(user, sc);
 	}
 
 	private static boolean anmelden(Scanner sc) {
-		String input = sc.next();
+		String LogOderReg = sc.next();
 		System.out.println("Bitte gib den Benutzernamen deines Accounts an:");
 		String username = sc.next();
-		if (input.equalsIgnoreCase("LOG"))
+
+		if (LogOderReg.equalsIgnoreCase("LOG"))
 			return einloggen(username);
-		if (input.equalsIgnoreCase("REG"))
+		if (LogOderReg.equalsIgnoreCase("REG"))
 			return registrieren(sc, username);
 		return false;
 	}

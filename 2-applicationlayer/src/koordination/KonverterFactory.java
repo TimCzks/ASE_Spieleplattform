@@ -1,11 +1,11 @@
 package koordination;
 
 import konvertierung.InputFactory;
-import konvertierung.Konverter;
+import konvertierung.ErbauerKonverter;
 import konvertierung.OutputFactory;
 
 public class KonverterFactory {
-	public Konverter getKonverter() {
-		return new Konverter(new InputFactory().getInput(), new OutputFactory().getOutput());
+	public ErbauerKonverter getKonverter() {
+		return new ErbauerKonverter(new InputFactory().getInput(), new OutputFactory().getOutput());
 	}
 }

@@ -2,7 +2,7 @@ package koordination;
 
 import domain.code.User;
 
-public interface KonverterInterface {
+public interface ErbauerInterface {
 
 	public User erstelleUser(String username);
 
