@@ -69,7 +69,7 @@ public class PlattformVerwaltung {
 
 	private void spieleZahlenRaten(User user, Scanner sc) {
 		zr = new ZahlenRaten(sc);
-		zr.startGame();
+		zr.starteSpiel();
 		int spielergebnis = zr.validiereSpielergebnis();
 		user.getStats().setGespielteSpiele(user.getStats().getGespielteSpiele() + 1);
 		if (user.getStats().getRekordZR() > spielergebnis) {
@@ -79,7 +79,7 @@ public class PlattformVerwaltung {
 
 	private void spieleSchereSteinPapier(User user, Scanner sc) {
 		ssp = new SchereSteinPapier(sc);
-		ssp.startGame();
+		ssp.starteSpiel();
 		user.getStats().setSiegeSSP(user.getStats().getSiegeSSP() + ssp.validiereSpielergebnis()[1]);
 		user.getStats().setNiederlagenSSP(user.getStats().getNiederlagenSSP() + ssp.validiereSpielergebnis()[2]);
 		user.getStats().setUnentschiedenSSP(user.getStats().getUnentschiedenSSP() + ssp.validiereSpielergebnis()[3]);

@@ -35,7 +35,7 @@ public class ZahlenRaten {
 		}
 	}
 
-	public void startGame() {
+	public void starteSpiel() {
 		boolean inGame = true;
 		do {
 			System.out.println("Bitte gib eine Zahl zwischen 0 und 100 ein.");

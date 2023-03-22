@@ -20,7 +20,7 @@ public class SchereSteinPapier {
 		this.sc = sc;
 	}
 
-	public void startGame() {
+	public void starteSpiel() {
 		clearVariablesBeforeGame();
 		System.out.println(
 				"Willkommen bei Schere, Stein, Papier!\nZum Starten gib entweder 'SCHERE', 'STEIN' oder 'PAPIER' ein, "

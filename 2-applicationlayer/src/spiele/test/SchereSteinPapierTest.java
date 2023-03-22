@@ -13,11 +13,11 @@ class SchereSteinPapierTest {
 
 	@Test
 	void testStartGame() {
-		Mockito.doCallRealMethod().when(classUnderTest).startGame();
+		Mockito.doCallRealMethod().when(classUnderTest).starteSpiel();
 		Mockito.doNothing().when(classUnderTest).clearVariablesBeforeGame();
 		Mockito.doNothing().when(classUnderTest).starteSpielDurchlaeufeBisExit();
-		classUnderTest.startGame();
-		Mockito.verify(classUnderTest, Mockito.times(1)).startGame();
+		classUnderTest.starteSpiel();
+		Mockito.verify(classUnderTest, Mockito.times(1)).starteSpiel();
 	}
 
 	@Test

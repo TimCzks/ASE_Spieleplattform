@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import koordination.KonverterFactory;
-import koordination.KonverterInterface;
+import koordination.ErbauerInterface;
 
 public class Galgenmaennchen {
 
@@ -65,8 +65,8 @@ public class Galgenmaennchen {
 	}
 
 	private void createLoesungswort() {
-		KonverterInterface konv = new KonverterFactory().getKonverter();
-		setLoesungswort(konv.ermittleLoesungswort());
+		ErbauerInterface konv = new KonverterFactory().getKonverter();
+		setLoesungswort(konv.ermittleLoesungswortFuerGalgenmaennchen());
 		for (int i = 0; i < loesungswort.length(); i++) {
 			checkObSieg.add('?');
 			wortUmgewandelt.add('_');
