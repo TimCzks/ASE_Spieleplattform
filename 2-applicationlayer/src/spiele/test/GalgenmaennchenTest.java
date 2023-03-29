@@ -41,17 +41,12 @@ class GalgenmaennchenTest {
 	@Test
 	void testValidateEndingSieg() {
 		Mockito.doCallRealMethod().when(classUnderTest).validiereSpielergebnis(Mockito.isA(Integer.class));
-		Mockito.when(userMock.getStats()).thenReturn(statsMock);
-		Mockito.doNothing().when(statsMock).setGespielteSpiele(Mockito.isA(Integer.class));
-		Mockito.doNothing().when(statsMock).setSiegeGGM(Mockito.isA(Integer.class));
 		assertEquals(1, classUnderTest.validiereSpielergebnis(10));
 	}
 
 	@Test
 	void testValidateEndingNiederlage() {
 		Mockito.doCallRealMethod().when(classUnderTest).validiereSpielergebnis(Mockito.isA(Integer.class));
-		Mockito.when(userMock.getStats()).thenReturn(statsMock);
-		Mockito.doNothing().when(statsMock).setGespielteSpiele(Mockito.isA(Integer.class));
 		assertEquals(0, classUnderTest.validiereSpielergebnis(0));
 	}
 
