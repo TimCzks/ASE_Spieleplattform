@@ -11,4 +11,6 @@ public interface ErbauerInterface {
 	public String ermittleLoesungswortFuerGalgenmaennchen();
 
 	public boolean pruefeObUserBereitsExistiert(String username);
+
+	public String[] ermittleAlleUsernamen();
 }

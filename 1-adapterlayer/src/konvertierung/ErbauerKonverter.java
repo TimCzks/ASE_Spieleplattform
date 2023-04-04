@@ -19,7 +19,7 @@ public class ErbauerKonverter implements ErbauerInterface {
 
 	@Override
 	public User erstelleUser(String username) {
-		String[] s = inputObj.leseDatenVonDatei(username, ",");
+		String[] s = inputObj.leseDatenVonDatei("Users/" + username, ",");
 		return new User(username, new Stats(Integer.parseInt(s[0]), Integer.parseInt(s[1]), Integer.parseInt(s[2]),
 				Integer.parseInt(s[3]), Integer.parseInt(s[4]), Integer.parseInt(s[5])));
 	}
@@ -51,5 +51,10 @@ public class ErbauerKonverter implements ErbauerInterface {
 
 	public void setOutputObj(OutputInterface outputObj) {
 		this.outputObj = outputObj;
+	}
+
+	@Override
+	public String[] ermittleAlleUsernamen() {
+		return inputObj.ermittleAlleUsernamen();
 	}
 }

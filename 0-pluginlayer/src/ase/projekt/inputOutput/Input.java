@@ -32,6 +32,13 @@ public class Input implements InputInterface {
 
 	@Override
 	public boolean pruefeObUserBereitsExistiert(String username) {
-		return new File(PATH + username + ".txt").exists();
+		return new File(PATH + "Users/" + username + ".txt").exists();
+	}
+
+	@Override
+	public String[] ermittleAlleUsernamen() {
+		File ordner = new File(PATH + "Users/");
+		String[] userNamenListe = ordner.list();
+		return userNamenListe;
 	}
 }

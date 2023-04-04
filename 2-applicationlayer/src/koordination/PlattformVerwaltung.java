@@ -2,6 +2,7 @@ package koordination;
 
 import java.util.Scanner;
 
+import bestenliste.Bestenliste;
 import domain.code.User;
 import spiele.Galgenmaennchen;
 import spiele.SchereSteinPapier;
@@ -12,9 +13,11 @@ public class PlattformVerwaltung {
 	private Galgenmaennchen ggm;
 	private SchereSteinPapier ssp;
 	private ZahlenRaten zr;
+	private Bestenliste bestenliste;
 
 	public PlattformVerwaltung(User user, Scanner sc) {
 		super();
+		bestenliste = new Bestenliste();
 		starteSpieleplattform(user, sc);
 	}
 
@@ -42,9 +45,13 @@ public class PlattformVerwaltung {
 				MainMenu.konverter.speichereUserAb(user);
 				System.out.println("Aktuelle Stats erfolgreich gespeichert.");
 				break;
+			case "BESTENLISTE":
+				bestenliste.printBestenliste();
+				break;
 			case "HELP":
 				getHelp();
 				System.out.println("\nWas möchtest du tun?");
+				break;
 			case "EXIT":
 				inLoop = false;
 				System.out.println("Bis zum nächsten mal!");
@@ -59,6 +66,7 @@ public class PlattformVerwaltung {
 		System.out.println("Hey, mit 'GGM' startest du eine Runde 'Galgenmännchen'."
 				+ "\nMit 'SSP' startest du eine Runde 'Schere, Stein, Papier'."
 				+ "\nMit 'ZR' startest du eine Runde 'Zahlen Raten'.\nMit dem Befehl 'STATS' kannst du dir deine bisherige Spielestatistik anschauen."
+				+ "\nMit 'BESTENLISTE' kannst du dir anschauen, wer in welchem Spiel die besten Stats erzielt hat."
 				+ "\nüber 'HELP' bekommst du eine Übersicht über alle nutzbaren Befehle."
 				+ "\nüber 'SAVE' kannst du deinen Account mit der aktuellen Statistik abspeichern."
 				+ "\nüber 'EXIT' kannst du das Spiel verlassen - denke daran, vorher zu speichern.");
@@ -95,6 +103,7 @@ public class PlattformVerwaltung {
 				+ "\n'SSP': Startet eine Runde 'Schere, Stein, Papier'." + "\n'ZR': Startet eine Runde 'Zahlen Raten'."
 				+ "\n'STATS': Lasse dir deine bisherige Spielestatistik anzeigen."
 				+ "\n'SAVE': Speichere deinen Account mit der aktuellen Statistik ab."
+				+ "\n'BESTENLISTE': Schaue dir an, wer in welchem Spiel die besten Stats erzielt hat."
 				+ "\n'HELP': Lasse dir alle nutzbaren Befehle anzeigen."
 				+ "\n'EXIT': Verlassen der Spieleplattform - denke daran, vorher zu speichern.");
 	}

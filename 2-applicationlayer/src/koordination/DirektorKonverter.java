@@ -25,4 +25,8 @@ public class DirektorKonverter {
 	public void setErbauer(ErbauerInterface erbauer) {
 		this.erbauer = erbauer;
 	}
+
+	public String[] ermittleAlleUsernamen() {
+		return erbauer.ermittleAlleUsernamen();
+	}
 }
