@@ -3,7 +3,9 @@ package koordination;
 import java.util.Scanner;
 
 import bestenliste.Bestenliste;
-import bestenliste.BestenlisteObserver;
+import bestenliste.BestenlisteObserverGGM;
+import bestenliste.BestenlisteObserverSSP;
+import bestenliste.BestenlisteObserverZR;
 import bestenliste.BestenlistenObserverVerwaltung;
 import domain.code.User;
 import spiele.Galgenmaennchen;
@@ -18,15 +20,15 @@ public class PlattformVerwaltung {
 	private Bestenliste bestenliste;
 	private User aktuellerUser;
 	private BestenlistenObserverVerwaltung observable;
-	private BestenlisteObserver observer;
+	private BestenlisteObserverGGM observerGGM;
+	private BestenlisteObserverSSP observerSSP;
+	private BestenlisteObserverZR observerZR;
 
 	public PlattformVerwaltung(User aktuellerUser) {
 		super();
 		this.aktuellerUser = aktuellerUser;
 		setBestenliste(new Bestenliste());
-		observable = new BestenlistenObserverVerwaltung();
-		observer = new BestenlisteObserver();
-		observable.addBeobachter(observer);
+		setUpObservers();
 	}
 
 	public void starteSpieleplattform(Scanner sc) {
@@ -125,6 +127,17 @@ public class PlattformVerwaltung {
 				+ "\n'BESTENLISTE': Schaue dir an, wer in welchem Spiel die besten Stats erzielt hat."
 				+ "\n'HELP': Lasse dir alle nutzbaren Befehle anzeigen."
 				+ "\n'EXIT': Verlassen der Spieleplattform - denke daran, vorher zu speichern.");
+	}
+
+	private void setUpObservers() {
+		observable = new BestenlistenObserverVerwaltung();
+		observerGGM = new BestenlisteObserverGGM();
+		observerSSP = new BestenlisteObserverSSP();
+		observerZR = new BestenlisteObserverZR();
+		observable.addBeobachter(observerGGM);
+		observable.addBeobachter(observerSSP);
+		observable.addBeobachter(observerZR);
+
 	}
 
 	public User getAktuellerUser() {

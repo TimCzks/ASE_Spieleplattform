@@ -10,20 +10,20 @@ public class BestenlistenObserverVerwaltung {
 	private int newStat;
 	private String spiel;
 
-	private List<BestenlisteObserver> bestenlisten = new ArrayList<>();
+	private List<ObserverInterface> observerListe = new ArrayList<>();
 
-	public void addBeobachter(BestenlisteObserver bestenliste) {
-		this.bestenlisten.add(bestenliste);
+	public void addBeobachter(ObserverInterface observer) {
+		this.observerListe.add(observer);
 	}
 
-	public void removeBeobachter(BestenlisteObserver bestenliste) {
-		this.bestenlisten.remove(bestenliste);
+	public void removeBeobachter(ObserverInterface observer) {
+		this.observerListe.remove(observer);
 	}
 
 	public void setNewStat(int newStat, String spiel, PlattformVerwaltung spielePlattform) {
 		this.newStat = newStat;
 		this.spiel = spiel;
-		for (BestenlisteObserver observer : this.bestenlisten) {
+		for (ObserverInterface observer : this.observerListe) {
 			observer.update(this.newStat, this.spiel, spielePlattform);
 		}
 	}
