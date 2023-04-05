@@ -56,8 +56,8 @@ public class ZahlenRaten {
 	}
 
 	public int validiereSpielergebnis() {
-		System.out
-				.println("Richtig getippt, die Zahl war " + number + ", und du hast " + count + " Versuche gebraucht!");
-		return ++count;
+		System.out.println(
+				"Richtig getippt, die Zahl war " + number + ", und du hast " + ++count + " Versuche gebraucht!");
+		return count;
 	}
 }

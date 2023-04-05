@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import domain.code.User;
@@ -16,27 +17,33 @@ public class Bestenliste {
 
 	private DirektorKonverter konverter = new DirektorKonverter();
 	private List<User> userListe = new ArrayList<>();
-	private List<String> bestenliste = new LinkedList<>();
+	private List<Map.Entry<String, String>> bestenlisteAlsStringausdruck = new LinkedList<>();
 	private List<Integer> bestenlisteInZahlen = new LinkedList<>();
 	// TODO: nehme bestenlisteInZahlen und vergleiche sie mit neuem Wert im
 	// BestenlisteObserver ("update()")
 
 	public Bestenliste() {
-		List<String> usernamen = Arrays.asList(konverter.ermittleAlleUsernamen());
-		for (String user : usernamen) {
-			userListe.add(konverter.erstelleUser(user.replace(".txt", "")));
-		}
-		ermittleBestenliste();
+
 	}
 
 	public void printBestenliste() {
 		System.out.println("Die Bestenliste für alle Spiele:");
-		for (String eintrag : bestenliste) {
-			System.out.println("\n" + eintrag);
+		for (Entry<String, String> eintrag : getBestenlisteAlsStringausdruck()) {
+			System.out.println("\n" + eintrag.getValue());
 		}
 	}
 
-	private void ermittleBestenliste() {
+	private void erstelleUserListe() {
+		List<String> usernamen = Arrays.asList(getKonverter().ermittleAlleUsernamen());
+		for (String user : usernamen) {
+			userListe.add(getKonverter().erstelleUser(user.replace(".txt", "")));
+		}
+	}
+
+	public void ermittleBestenliste() {
+		userListe.clear();
+		erstelleUserListe();
+		bestenlisteAlsStringausdruck.clear();
 		ermittleGGMRekord();
 		ermittleZRRekord();
 		ermittleSSPMeisteSiege();
@@ -58,7 +65,12 @@ public class Bestenliste {
 			siegeVonUserMap.put(user.getUsername(), user.getStats().getRekordZR());
 		}
 
-		sortiereStatsUndAddeZuListe(siegeVonUserMap, "'Zahlenraten'");
+		List<Map.Entry<String, Integer>> sortedList = siegeVonUserMap.entrySet().stream()
+				.sorted(Map.Entry.comparingByValue(Comparator.naturalOrder())).collect(Collectors.toList());
+
+		getBestenlisteAlsStringausdruck().add(Map.entry("'Zahlenraten'", "Beste*r Spieler*in in 'Zahlenraten' ist "
+				+ sortedList.get(0).getKey() + " mit " + sortedList.get(0).getValue() + " Versuchen."));
+		getBestenlisteInZahlen().add(sortedList.get(0).getValue());
 	}
 
 	private void ermittleSSPMeisteSiege() {
@@ -71,25 +83,38 @@ public class Bestenliste {
 	}
 
 	private void ermittleSSPMeisteNiederlagen() {
-		Map<String, Integer> siegeVonUserMap = new HashMap<>();
+		Map<String, Integer> niederlagenVonUserMap = new HashMap<>();
 		for (User user : userListe) {
-			siegeVonUserMap.put(user.getUsername(), user.getStats().getNiederlagenSSP());
+			niederlagenVonUserMap.put(user.getUsername(), user.getStats().getNiederlagenSSP());
 		}
 
-		List<Map.Entry<String, Integer>> sortedList = siegeVonUserMap.entrySet().stream()
+		List<Map.Entry<String, Integer>> sortedList = niederlagenVonUserMap.entrySet().stream()
 				.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).collect(Collectors.toList());
 
-		bestenliste.add("Bonus:\nSchlechteste*r Spieler*in in 'Schere, Stein, Papier' ist " + sortedList.get(0).getKey()
-				+ " mit " + sortedList.get(0).getValue() + " Niederlagen.");
-		bestenlisteInZahlen.add(sortedList.get(0).getValue());
+		getBestenlisteAlsStringausdruck().add(Map.entry("'Schere, Stein, Papier'N",
+				"Bonus:\nSchlechteste*r Spieler*in in 'Schere, Stein, Papier' ist " + sortedList.get(0).getKey()
+						+ " mit " + sortedList.get(0).getValue() + " Niederlagen."));
+		getBestenlisteInZahlen().add(sortedList.get(0).getValue());
 	}
 
 	private void sortiereStatsUndAddeZuListe(Map<String, Integer> siegeVonUserMap, String spielname) {
 		List<Map.Entry<String, Integer>> sortedList = siegeVonUserMap.entrySet().stream()
 				.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).collect(Collectors.toList());
 
-		bestenliste.add("Beste*r Spieler*in in " + spielname + " ist " + sortedList.get(0).getKey() + " mit "
-				+ sortedList.get(0).getValue() + " Siegen.");
-		bestenlisteInZahlen.add(sortedList.get(0).getValue());
+		getBestenlisteAlsStringausdruck().add(Map.entry(spielname, "Beste*r Spieler*in in " + spielname + " ist "
+				+ sortedList.get(0).getKey() + " mit " + sortedList.get(0).getValue() + " Siegen."));
+		getBestenlisteInZahlen().add(sortedList.get(0).getValue());
+	}
+
+	public List<Integer> getBestenlisteInZahlen() {
+		return bestenlisteInZahlen;
+	}
+
+	public List<Map.Entry<String, String>> getBestenlisteAlsStringausdruck() {
+		return bestenlisteAlsStringausdruck;
+	}
+
+	public DirektorKonverter getKonverter() {
+		return konverter;
 	}
 }

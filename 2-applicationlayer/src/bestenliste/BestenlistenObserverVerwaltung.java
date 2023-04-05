@@ -3,6 +3,8 @@ package bestenliste;
 import java.util.ArrayList;
 import java.util.List;
 
+import koordination.PlattformVerwaltung;
+
 public class BestenlistenObserverVerwaltung {
 
 	private int newStat;
@@ -18,11 +20,11 @@ public class BestenlistenObserverVerwaltung {
 		this.bestenlisten.remove(bestenliste);
 	}
 
-	public void setNewStat(int newStat, String spiel) {
+	public void setNewStat(int newStat, String spiel, PlattformVerwaltung spielePlattform) {
 		this.newStat = newStat;
 		this.spiel = spiel;
-		for (BestenlisteObserver bestenliste : this.bestenlisten) {
-			bestenliste.update(this.newStat, spiel);
+		for (BestenlisteObserver observer : this.bestenlisten) {
+			observer.update(this.newStat, this.spiel, spielePlattform);
 		}
 	}
 }

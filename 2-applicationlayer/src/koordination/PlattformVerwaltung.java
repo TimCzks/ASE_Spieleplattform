@@ -3,6 +3,8 @@ package koordination;
 import java.util.Scanner;
 
 import bestenliste.Bestenliste;
+import bestenliste.BestenlisteObserver;
+import bestenliste.BestenlistenObserverVerwaltung;
 import domain.code.User;
 import spiele.Galgenmaennchen;
 import spiele.SchereSteinPapier;
@@ -14,35 +16,40 @@ public class PlattformVerwaltung {
 	private SchereSteinPapier ssp;
 	private ZahlenRaten zr;
 	private Bestenliste bestenliste;
+	private User aktuellerUser;
+	private BestenlistenObserverVerwaltung observable;
+	private BestenlisteObserver observer;
 
-	public PlattformVerwaltung(User user, Scanner sc) {
+	public PlattformVerwaltung(User aktuellerUser) {
 		super();
-		bestenliste = new Bestenliste();
-		starteSpieleplattform(user, sc);
+		this.aktuellerUser = aktuellerUser;
+		setBestenliste(new Bestenliste());
+		observable = new BestenlistenObserverVerwaltung();
+		observer = new BestenlisteObserver();
+		observable.addBeobachter(observer);
 	}
 
-	public void starteSpieleplattform(User user, Scanner sc) {
+	public void starteSpieleplattform(Scanner sc) {
 		printEinleitungZuASE();
 		boolean inLoop = true;
 		do {
-
+			bestenliste.ermittleBestenliste();
 			System.out.println("\nWas möchtest du tun?");
 			String eingabe = sc.next();
 			switch (eingabe) {
 			case "GGM":
-				spieleGalgenmaennchen(user, sc);
+				spieleGalgenmaennchen(sc);
 				break;
 			case "ZR":
-				spieleZahlenRaten(user, sc);
+				spieleZahlenRaten(sc);
 				break;
 			case "SSP":
-				spieleSchereSteinPapier(user, sc);
+				spieleSchereSteinPapier(sc);
 				break;
 			case "STATS":
-				System.out.println(user.toString());
+				System.out.println(aktuellerUser.toString());
 				break;
 			case "SAVE":
-				MainMenu.konverter.speichereUserAb(user);
 				System.out.println("Aktuelle Stats erfolgreich gespeichert.");
 				break;
 			case "BESTENLISTE":
@@ -72,30 +79,42 @@ public class PlattformVerwaltung {
 				+ "\nüber 'EXIT' kannst du das Spiel verlassen - denke daran, vorher zu speichern.");
 	}
 
-	private void spieleGalgenmaennchen(User user, Scanner sc) {
+	private void spieleGalgenmaennchen(Scanner sc) {
 		ggm = new Galgenmaennchen(sc);
 		ggm.starteSpiel();
-		user.getStats().setSiegeGGM(user.getStats().getSiegeGGM() + ggm.validiereSpielergebnis(ggm.getLastingTries()));
-		user.getStats().setGespielteSpiele(user.getStats().getGespielteSpiele() + 1);
+		aktuellerUser.getStats().setSiegeGGM(
+				aktuellerUser.getStats().getSiegeGGM() + ggm.validiereSpielergebnis(ggm.getLastingTries()));
+		aktuellerUser.getStats().setGespielteSpiele(aktuellerUser.getStats().getGespielteSpiele() + 1);
+		observable.setNewStat(aktuellerUser.getStats().getSiegeGGM(), "'Galgenmännchen'", this);
 	}
 
-	private void spieleZahlenRaten(User user, Scanner sc) {
+	private void spieleZahlenRaten(Scanner sc) {
 		zr = new ZahlenRaten(sc);
 		zr.starteSpiel();
 		int spielergebnis = zr.validiereSpielergebnis();
-		user.getStats().setGespielteSpiele(user.getStats().getGespielteSpiele() + 1);
-		if (user.getStats().getRekordZR() > spielergebnis) {
-			user.getStats().setRekordZR(spielergebnis);
+		aktuellerUser.getStats().setGespielteSpiele(aktuellerUser.getStats().getGespielteSpiele() + 1);
+		if (aktuellerUser.getStats().getRekordZR() > spielergebnis) {
+			aktuellerUser.getStats().setRekordZR(spielergebnis);
+			observable.setNewStat(aktuellerUser.getStats().getRekordZR(), "'Zahlenraten'", this);
 		}
 	}
 
-	private void spieleSchereSteinPapier(User user, Scanner sc) {
+	private void spieleSchereSteinPapier(Scanner sc) {
 		ssp = new SchereSteinPapier(sc);
 		ssp.starteSpiel();
-		user.getStats().setSiegeSSP(user.getStats().getSiegeSSP() + ssp.validiereSpielergebnis()[1]);
-		user.getStats().setNiederlagenSSP(user.getStats().getNiederlagenSSP() + ssp.validiereSpielergebnis()[2]);
-		user.getStats().setUnentschiedenSSP(user.getStats().getUnentschiedenSSP() + ssp.validiereSpielergebnis()[3]);
-		user.getStats().setGespielteSpiele(user.getStats().getGespielteSpiele() + ssp.validiereSpielergebnis()[0]);
+		aktuellerUser.getStats().setSiegeSSP(aktuellerUser.getStats().getSiegeSSP() + ssp.validiereSpielergebnis()[1]);
+		aktuellerUser.getStats()
+				.setNiederlagenSSP(aktuellerUser.getStats().getNiederlagenSSP() + ssp.validiereSpielergebnis()[2]);
+		aktuellerUser.getStats()
+				.setUnentschiedenSSP(aktuellerUser.getStats().getUnentschiedenSSP() + ssp.validiereSpielergebnis()[3]);
+		aktuellerUser.getStats()
+				.setGespielteSpiele(aktuellerUser.getStats().getGespielteSpiele() + ssp.validiereSpielergebnis()[0]);
+		observable.setNewStat(aktuellerUser.getStats().getSiegeSSP(), "'Schere, Stein, Papier'", this);
+		observable.setNewStat(aktuellerUser.getStats().getNiederlagenSSP(), "'Schere, Stein, Papier'N", this);
+	}
+
+	public void speichereUserAb() {
+		MainMenu.konverter.speichereUserAb(aktuellerUser);
 	}
 
 	private void getHelp() {
@@ -106,6 +125,14 @@ public class PlattformVerwaltung {
 				+ "\n'BESTENLISTE': Schaue dir an, wer in welchem Spiel die besten Stats erzielt hat."
 				+ "\n'HELP': Lasse dir alle nutzbaren Befehle anzeigen."
 				+ "\n'EXIT': Verlassen der Spieleplattform - denke daran, vorher zu speichern.");
+	}
+
+	public User getAktuellerUser() {
+		return aktuellerUser;
+	}
+
+	public void setBestenliste(Bestenliste bestenliste) {
+		this.bestenliste = bestenliste;
 	}
 
 }

@@ -9,7 +9,7 @@ import konvertierung.OutputInterface;
 
 public class Output implements OutputInterface {
 
-	private final String PATH = "./resources/";
+	private final String PATH = "./resources/Users/";
 
 	@Override
 	public void speichereUserAb(String[] userInfos) {
