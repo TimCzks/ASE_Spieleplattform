@@ -47,6 +47,7 @@ public class Bestenliste {
 		ermittleGGMRekord();
 		ermittleZRRekord();
 		ermittleSSPMeisteSiege();
+		ermittleMeisteGesamteSpiele();
 		ermittleSSPMeisteNiederlagen();
 	}
 
@@ -80,6 +81,21 @@ public class Bestenliste {
 		}
 
 		sortiereStatsUndAddeZuListe(siegeVonUserMap, "'Schere, Stein, Papier'");
+	}
+
+	private void ermittleMeisteGesamteSpiele() {
+		Map<String, Integer> GesamtSpieleVonUserMap = new HashMap<>();
+		for (User user : userListe) {
+			GesamtSpieleVonUserMap.put(user.getUsername(), user.getStats().getGespielteSpiele());
+		}
+
+		List<Map.Entry<String, Integer>> sortedList = GesamtSpieleVonUserMap.entrySet().stream()
+				.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).collect(Collectors.toList());
+
+		getBestenlisteAlsStringausdruck()
+				.add(Map.entry("Spiele_Gesamt", "Spieler*in mit den meisten insgesamt gespielten Spielen ist "
+						+ sortedList.get(0).getKey() + " mit " + sortedList.get(0).getValue() + " Spielen."));
+		getBestenlisteInZahlen().add(sortedList.get(0).getValue());
 	}
 
 	private void ermittleSSPMeisteNiederlagen() {

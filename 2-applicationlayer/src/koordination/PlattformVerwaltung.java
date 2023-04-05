@@ -5,6 +5,7 @@ import java.util.Scanner;
 import bestenliste.Bestenliste;
 import bestenliste.BestenlisteObserverGGM;
 import bestenliste.BestenlisteObserverSSP;
+import bestenliste.BestenlisteObserverSpieleGesamt;
 import bestenliste.BestenlisteObserverZR;
 import bestenliste.BestenlistenObserverVerwaltung;
 import domain.code.User;
@@ -23,6 +24,7 @@ public class PlattformVerwaltung {
 	private BestenlisteObserverGGM observerGGM;
 	private BestenlisteObserverSSP observerSSP;
 	private BestenlisteObserverZR observerZR;
+	private BestenlisteObserverSpieleGesamt observerSpieleGesamt;
 
 	public PlattformVerwaltung(User aktuellerUser) {
 		super();
@@ -68,6 +70,7 @@ public class PlattformVerwaltung {
 			default:
 				System.out.println("Eingabe nicht erkannt. Bitte achte auf die Schreibweise und versuche es erneut.");
 			}
+			observable.setNewStat(aktuellerUser.getStats().getGespielteSpiele(), "Spiele_Gesamt", this);
 		} while (inLoop);
 	}
 
@@ -134,6 +137,8 @@ public class PlattformVerwaltung {
 		observerGGM = new BestenlisteObserverGGM();
 		observerSSP = new BestenlisteObserverSSP();
 		observerZR = new BestenlisteObserverZR();
+		observerSpieleGesamt = new BestenlisteObserverSpieleGesamt();
+		observable.addBeobachter(observerSpieleGesamt);
 		observable.addBeobachter(observerGGM);
 		observable.addBeobachter(observerSSP);
 		observable.addBeobachter(observerZR);

@@ -20,8 +20,9 @@ public class MainMenu {
 			System.out.println("Eingabe nicht erkannt. Bitte achte auf die Schreibweise und versuche es erneut.");
 		}
 		System.out.println("Du bist erfolgreich eingeloggt als " + user.getUsername() + ".\n");
-		PlattformVerwaltung pV = new PlattformVerwaltung(user);
-		pV.starteSpieleplattform(sc);
+		PlattformVerwaltung plattformVerwaltung = new PlattformVerwaltung(user);
+		plattformVerwaltung.starteSpieleplattform(sc);
+		sc.close();
 	}
 
 	private static boolean anmelden(Scanner sc) {

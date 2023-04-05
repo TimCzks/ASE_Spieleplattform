@@ -17,8 +17,8 @@ public class BestenlisteObserverSSP implements ObserverInterface {
 							+ spielePlattform.getAktuellerUser().getUsername() + " mit " + newStat + " Siegen."));
 			uebergebeNeueBestenlisteAn(spielePlattform);
 		}
-		if (spiel.equals("'Schere, Stein, Papier'N") && newStat > aktuelleBestenliste.getBestenlisteInZahlen().get(3)) {
-			aktuelleBestenliste.getBestenlisteAlsStringausdruck().set(3,
+		if (spiel.equals("'Schere, Stein, Papier'N") && newStat > aktuelleBestenliste.getBestenlisteInZahlen().get(4)) {
+			aktuelleBestenliste.getBestenlisteAlsStringausdruck().set(4,
 					Map.entry(spiel + "N", "Schlechteste*r Spieler*in in " + spiel + " ist "
 							+ spielePlattform.getAktuellerUser().getUsername() + " mit " + newStat + " Niederlagen."));
 			uebergebeNeueBestenlisteAn(spielePlattform);
