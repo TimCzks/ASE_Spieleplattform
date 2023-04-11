@@ -19,8 +19,6 @@ public class Bestenliste {
 	private List<User> userListe = new ArrayList<>();
 	private List<Map.Entry<String, String>> bestenlisteAlsStringausdruck = new LinkedList<>();
 	private List<Integer> bestenlisteInZahlen = new LinkedList<>();
-	// TODO: nehme bestenlisteInZahlen und vergleiche sie mit neuem Wert im
-	// BestenlisteObserver ("update()")
 
 	public Bestenliste() {
 
@@ -33,17 +31,16 @@ public class Bestenliste {
 		}
 	}
 
-	private void erstelleUserListe() {
-		List<String> usernamen = Arrays.asList(getKonverter().ermittleAlleUsernamen());
+	public void erstelleUserListe() {
+		List<String> usernamen = Arrays.asList(konverter.ermittleAlleUsernamen());
 		for (String user : usernamen) {
-			userListe.add(getKonverter().erstelleUser(user.replace(".txt", "")));
+			getUserListe().add(konverter.erstelleUser(user.replace(".txt", "")));
 		}
 	}
 
 	public void ermittleBestenliste() {
-		userListe.clear();
+		leereListenVorErmittlung();
 		erstelleUserListe();
-		bestenlisteAlsStringausdruck.clear();
 		ermittleGGMRekord();
 		ermittleZRRekord();
 		ermittleSSPMeisteSiege();
@@ -51,18 +48,23 @@ public class Bestenliste {
 		ermittleSSPMeisteNiederlagen();
 	}
 
-	private void ermittleGGMRekord() {
+	public void leereListenVorErmittlung() {
+		bestenlisteAlsStringausdruck.clear();
+		userListe.clear();
+	}
+
+	public void ermittleGGMRekord() {
 		Map<String, Integer> siegeVonUserMap = new HashMap<>();
-		for (User user : userListe) {
+		for (User user : getUserListe()) {
 			siegeVonUserMap.put(user.getUsername(), user.getStats().getSiegeGGM());
 		}
 
 		sortiereStatsUndAddeZuListe(siegeVonUserMap, "'Galgenmännchen'");
 	}
 
-	private void ermittleZRRekord() {
+	public void ermittleZRRekord() {
 		Map<String, Integer> siegeVonUserMap = new HashMap<>();
-		for (User user : userListe) {
+		for (User user : getUserListe()) {
 			siegeVonUserMap.put(user.getUsername(), user.getStats().getRekordZR());
 		}
 
@@ -74,18 +76,18 @@ public class Bestenliste {
 		getBestenlisteInZahlen().add(sortedList.get(0).getValue());
 	}
 
-	private void ermittleSSPMeisteSiege() {
+	public void ermittleSSPMeisteSiege() {
 		Map<String, Integer> siegeVonUserMap = new HashMap<>();
-		for (User user : userListe) {
+		for (User user : getUserListe()) {
 			siegeVonUserMap.put(user.getUsername(), user.getStats().getSiegeSSP());
 		}
 
 		sortiereStatsUndAddeZuListe(siegeVonUserMap, "'Schere, Stein, Papier'");
 	}
 
-	private void ermittleMeisteGesamteSpiele() {
+	public void ermittleMeisteGesamteSpiele() {
 		Map<String, Integer> GesamtSpieleVonUserMap = new HashMap<>();
-		for (User user : userListe) {
+		for (User user : getUserListe()) {
 			GesamtSpieleVonUserMap.put(user.getUsername(), user.getStats().getGespielteSpiele());
 		}
 
@@ -98,9 +100,9 @@ public class Bestenliste {
 		getBestenlisteInZahlen().add(sortedList.get(0).getValue());
 	}
 
-	private void ermittleSSPMeisteNiederlagen() {
+	public void ermittleSSPMeisteNiederlagen() {
 		Map<String, Integer> niederlagenVonUserMap = new HashMap<>();
-		for (User user : userListe) {
+		for (User user : getUserListe()) {
 			niederlagenVonUserMap.put(user.getUsername(), user.getStats().getNiederlagenSSP());
 		}
 
@@ -130,7 +132,23 @@ public class Bestenliste {
 		return bestenlisteAlsStringausdruck;
 	}
 
+	public void setBestenlisteAlsStringausdruck(List<Map.Entry<String, String>> bestenlisteAlsStringausdruck) {
+		this.bestenlisteAlsStringausdruck = bestenlisteAlsStringausdruck;
+	}
+
 	public DirektorKonverter getKonverter() {
 		return konverter;
+	}
+
+	public void setKonverter(DirektorKonverter konverter) {
+		this.konverter = konverter;
+	}
+
+	public List<User> getUserListe() {
+		return userListe;
+	}
+
+	public void setUserListe(List<User> userListe) {
+		this.userListe = userListe;
 	}
 }
