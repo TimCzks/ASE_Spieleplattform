@@ -12,7 +12,7 @@ class InputTest {
 
 	@Test
 	void testLeseDatenVonDatei() {
-		String[] actual = classUnderTest.leseDatenVonDatei("TestUser", ",");
+		String[] actual = classUnderTest.leseDatenVonDatei("Users/TestUser", ",");
 		String[] expected = new String[] { "1", "7", "0", "0", "0", "2" };
 		assertEquals(expected[1], actual[1]);
 	}
