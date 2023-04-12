@@ -23,7 +23,15 @@ public class BestenlisteObserverGGM implements ObserverInterface {
 	@Override
 	public void uebergebeNeueBestenlisteAn(PlattformVerwaltung spielePlattform) {
 		spielePlattform.speichereUserAb();
-		spielePlattform.setBestenliste(aktuelleBestenliste);
+		spielePlattform.setBestenliste(getAktuelleBestenliste());
+	}
+
+	public Bestenliste getAktuelleBestenliste() {
+		return aktuelleBestenliste;
+	}
+
+	public void setAktuelleBestenliste(Bestenliste bestenliste) {
+		this.aktuelleBestenliste = bestenliste;
 	}
 
 }
