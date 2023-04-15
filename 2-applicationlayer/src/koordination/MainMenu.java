@@ -5,6 +5,15 @@ import java.util.Scanner;
 import domain.code.Stats;
 import domain.code.User;
 
+/**
+ * Das MainMenu startet die gesamte Spieleplattform. Über die Befehle 'REG' oder
+ * 'LOG' kann man sich anmelden.
+ * 
+ * @author Tim Czerkas
+ * @version 1.0
+ * @since 15.04.2023
+ *
+ */
 public class MainMenu {
 
 	private static User user;
