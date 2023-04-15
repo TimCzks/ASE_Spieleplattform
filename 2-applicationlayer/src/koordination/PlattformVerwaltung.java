@@ -61,7 +61,6 @@ public class PlattformVerwaltung {
 				break;
 			case "HELP":
 				getHelp();
-				System.out.println("\nWas möchtest du tun?");
 				break;
 			case "EXIT":
 				inLoop = false;
